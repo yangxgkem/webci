@@ -28,8 +28,9 @@ class News_model extends CI_Model {
 	{
 		if ($slug === false)
 		{
-			$query = $this->db->get('news');//获取数据库某张表全部数据,返回php对象
-			return $query->result_array();//返回一个带下标的数组
+			$slug = 10000;
+			//$query = $this->db->get('news');//获取数据库某张表全部数据,返回php对象
+			//return $query->result_array();//返回一个带下标的数组
 		}
 
 		$query = $this->db->get_where('news', array('slug' => $slug));//条件查询数据库
@@ -52,5 +53,20 @@ class News_model extends CI_Model {
 		);
 
 		return $this->db->insert('news', $data);
+	}
+
+	public function test()
+	{
+		for ($i=10001; $i <= 1000000; $i++)
+		{
+			$data = array(
+				'title' => '标题'.$i,
+				'text' => '内容'.$i,
+				'slug' => $i,
+			);
+
+			$this->db->insert('news', $data);
+		}
+		echo "ok";
 	}
 }

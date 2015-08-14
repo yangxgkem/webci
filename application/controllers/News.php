@@ -149,4 +149,9 @@ class News extends CI_Controller {
 		$this->email->send();
 		echo $this->email->print_debugger();
 	}
+
+	public function test()
+	{
+		$this->news_model->test();
+	}
 }
