@@ -14,7 +14,7 @@
     <!-- No Baidu Siteapp-->
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
 
-    <link rel="stylesheet" href="application/views/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
     <style>
       .header {
         text-align: center;
@@ -52,8 +52,8 @@
       </div>
       <br/>
       <div class="am-cf">
-        <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl">
-        <input type="submit" name="" value="忘记密码 ^_^? " class="am-btn am-btn-default am-btn-sm am-fr">
+        <input type="submit" name="login" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl">
+        <input type="submit" name="forget" value="忘记密码 ^_^? " class="am-btn am-btn-default am-btn-sm am-fr">
       </div>
     </form>
   </div>

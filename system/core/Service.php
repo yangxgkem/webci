@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * 
  * View ： 负责前端页面展示，与Controller紧密联系。
  */
-class MY_Service {
+class CI_Service {
 
 	public function __construct()
 	{
