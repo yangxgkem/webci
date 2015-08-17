@@ -222,7 +222,7 @@ $config['log_threshold'] = array(1,2,3);
 | application/logs/ directory. Use a full server path with trailing slash.
 |
 */
-$config['log_path'] = '';
+$config['log_path'] = 'logs';
 
 /*
 |--------------------------------------------------------------------------
@@ -281,7 +281,7 @@ $config['error_views_path'] = '';
 | application/cache/ directory.  Use a full server path with trailing slash.
 |
 */
-$config['cache_path'] = '';
+$config['cache_path'] = 'cache';
 
 /*
 |--------------------------------------------------------------------------
