@@ -16,4 +16,5 @@ $config = array(
 		'port'     => '11211',
 		'weight'   => '1',
 	),
+	//可以添加多个memcached库缓存配置
 );
