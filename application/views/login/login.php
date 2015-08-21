@@ -14,7 +14,7 @@
     <!-- No Baidu Siteapp-->
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
 
-    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="assets/css/amazeui.css" />
     <style>
       .header {
         text-align: center;
@@ -41,14 +41,13 @@
 <div class="am-g am-g-fixed">
   <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
     <form method="post" class="am-form" action="<?php echo $action ?>">
-      <div class="am-input-group">
-        <span class="am-input-group-label"><i class="am-icon-user am-icon-fw"></i></span>
-        <input type="email" class="am-form-field" name="account" placeholder="Username">
+      <div class="am-form-group">
+        <label for="account">用户名</label>
+        <input type="account" id="account" class="am-form-field" name="account" placeholder="输入电子邮件">
       </div>
-      <br/>
-      <div class="am-input-group">
-        <span class="am-input-group-label"><i class="am-icon-lock am-icon-fw"></i></span>
-        <input type="password" class="am-form-field" name="password" placeholder="Password">
+      <div class="am-form-group">
+        <label for="password">密码</label>
+        <input type="password" id="password" class="am-form-field" name="password" placeholder="Password">
       </div>
       <br/>
       <div class="am-cf">

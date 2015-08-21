@@ -451,7 +451,13 @@ $config['csrf_exclude_uris'] = array();
 | even be a line of whitespace at the end of one of your scripts.  For
 | compression to work, nothing can be sent before the output buffer is called
 | by the output class.  Do not 'echo' any values with compression enabled.
+| 
+| 启动后会判定客户端http请求,accept_encoding字段是否支持 gzip 压缩,如果支持
+| 服务端这边将会对数据进行gzip压缩后通过 echo 回传给客户端
+| 所以在任何地方都不要进行 echo 进行输出操作
 |
+| 非常重要,如果要开启gzip 可以在ngnix.conf下配置,无需在web server中配置
+| 所以$config['compress_output'] = FALSE; 请不要修改, 设置为false即可
 */
 $config['compress_output'] = FALSE;
 

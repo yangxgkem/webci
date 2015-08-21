@@ -28,6 +28,8 @@ class CI_Service {
 		log_message('info', 'My Service Class Initialized');
 	}
 
+	//__get()方法用来获取私有属性 php面向对象一种内置方法,需要手动添加__get才会调用
+	//当我们只想 $this->属性名 时,就会调用__get方法
 	public function __get($key)
 	{
 		return get_instance()->$key;
