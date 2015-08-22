@@ -77,6 +77,15 @@ class CI_Controller {
 
 		$this->load =& load_class('Loader', 'core');
 		$this->load->initialize();
+
+		// 如果客户端传来cookie数据,则开启session,否则在服务端只有
+		// 在确定客户端登陆成功时才开启session存放基本数据
+		$sess_cookie_name = config_item('sess_cookie_name');
+		if ($_COOKIE[($sess_cookie_name)])
+		{
+			$this->load->library('session');
+		}
+
 		log_message('info', 'Controller Class Initialized');
 	}
 
