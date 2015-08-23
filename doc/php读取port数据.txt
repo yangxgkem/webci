@@ -1,0 +1,30 @@
+ext 与 PHP 交互时，ext 把 json 数据 post 给 PHP，但在 PHP里面 $_post 获取不到，$_REQUEST 也获取不到，
+但是通过 firedebug 看到的请求信息确实是把 JSON 数据 post 给了 PHP。
+
+想到以前通过flash将图片二进制流传给 PHP，然后使用 $GLOBALS['HTTP_RAW_POST_DATA'] 后正常获取到数据。
+
+PHP 默认只识别 application/x-www.form-urlencoded 标准的数据类型，因此，对型如 text/xml 或者 soap 或者 
+application/octet-stream 之类的内容无法解析，如果用 $_POST 数组来接收就会失败，故保留原型，
+交给 $GLOBALS['HTTP_RAW_POST_DATA'] 来接收。
+
+另外还有一项 php://input 也可以实现此这个功能
+
+file_get_contents("php://input");
+
+php://input 允许读取 POST 的原始数据。和 $HTTP_RAW_POST_DATA 比起来，它给内存带来的压力较小，
+并且不需要任何特殊的 php.ini 设置。php://input 不能用于 enctype="multipart/form-data"。
+
+
+
+
+最近用到ext与PHP交互，ext把json数据post给PHP，但在PHP里面$_post获取不到，$_REQUEST也获取不到，但是通过firedebug看到的请求信息确实是把JSON数据post给了PHP，这什么情况
+
+突然想到了以前接触过flash将图片二进制流传给php，灵机一动用$GLOBALS['HTTP_RAW_POST_DATA']获取到了。
+于是就深入的查了一下，原来PHP默认只识别application/x-www.form-urlencoded标准的数据类型，因此，对型如text/xml 或者 soap 或者 application/octet-stream 之类的内容无法解析，如果用$_POST数组来接收就会失败！故保留原型，交给$GLOBALS['HTTP_RAW_POST_DATA'] 来接收。
+
+php的HTTP_RAW_POST_DATA 
+用Content-Type=text/xml 类型，提交一个xml文档内容给了php server,要怎么获得这个POST数据。 
+The RAW / uninterpreted HTTP POST information can be accessed with: $GLOBALS['HTTP_RAW_POST_DATA'] This is useful in cases where the post Content-Type is not something PHP understands (such as text/xml).
+由于PHP默认只识别application/x-www.form-urlencoded标准的数据类型，因此，对型如text/xml的内容无法解析为$_POST数组，故保留原型，交给$GLOBALS['HTTP_RAW_POST_DATA'] 来接收。 
+另外还有一项 php://input 也可以实现此这个功能 
+php://input 允许读取 POST 的原始数据。和 $HTTP_RAW_POST_DATA 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.ini 设置。php://input 不能用于 enctype="multipart/form-data"。 

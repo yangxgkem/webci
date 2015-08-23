@@ -1,0 +1,74 @@
+浏览器向web服务器请求数据，发送header头内容为：
+
+#get方式 请求地址/login/index 使用http协议版本1.1
+GET /login/index HTTP/1.1
+
+#服务器IP+端口
+Host: 192.168.247.129:6001
+
+#客户端代理信息
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.0
+
+#浏览器支持的 MIME 类型分别是 text/html、application/xhtml+xml、application/xml 和 */*，优先顺序是它们从左到右的排列顺序
+	#text/html表示 html 文档；
+	#Application：用于传输应用程序数据或者二进制数据；
+	#application/xhtml+xml表示 xhtml 文档；
+	#application/xml表示 xml 文档。
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+
+#浏览器所支持的语言类型
+	#q是权重系数，范围 0 =< q <= 1，q 值越大，请求越倾向于获得其“;”之前的类型表示的内容
+	#若没有指定 q 值，则默认为1，若被赋值为0，则用于提醒服务器哪些是浏览器不接受的内容类型。
+Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3
+
+#浏览器支持的压缩编码是 gzip 和 deflate
+	#gzip是 GNU zip 的缩写，它是一个 GNU 自由软件的文件压缩程序，也经常用来表示 gzip 这种文件格式。
+	#deflate是同时使用了 LZ77 算法与哈夫曼编码（Huffman Coding）的一个无损数据压缩算法。
+Accept-Encoding: gzip, deflate
+
+#浏览器连接服务器类型
+#keep-alive 为持续连接,不会断开
+Connection: keep-alive
+
+
+
+
+web服务器响应浏览器数据，发送header头内容为：
+
+#响应采用http版本1.1
+#状态码200
+#描述信息:OK
+HTTP/1.1 200 OK
+
+#web服务器名称
+Server: nginx/1.4.6 (Ubuntu)
+
+#服务端响应客户端的时间
+Date: Thu, 20 Aug 2015 03:59:13 GMT
+
+#服务端发送的 MIME 类型及采用的编码方式
+Content-Type: text/html; charset=UTF-8
+
+#分块传递数据到客户端
+Transfer-Encoding: chunked
+
+#与客户端连接 保持持续连接 可以在nginx.conf下配置 keepalive_timeout 持续连接过期时间
+Connection: keep-alive
+
+#用于告知客户端 网站是用何种语言或框架编写
+X-Powered-By: PHP/5.5.9-1ubuntu4.11
+
+#设置cookie
+Set-Cookie: hdy_sess=57d2a46e9d7bff29d9fc08cc576318b5560e0d94; expires=Thu, 20-Aug-2015 05:59:13 GMT; Max-Age=7200; path=/; HttpOnly
+
+#过期时间 告诉浏览器缓存器 相关内容在多长时间内是新鲜的。过了这个时间，缓存器就会向源服务器发送请求，检查内容是否被修改
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+
+#缓存控制手段
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+
+#Pragma头域用来包含实现特定的指令，最常用的是Pragma:no-cache。在HTTP/1.1协议中，它的含义和Cache-Control:no-cache相同
+Pragma: no-cache
+
+#服务端能够发送压缩编码类型 在nginx.conf下配置
+Content-Encoding: gzip
