@@ -5,7 +5,6 @@ class Login extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->service('login/login_service'); //载入登录模块
 	}
 
 	/**
@@ -13,6 +12,19 @@ class Login extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->login_service->index();
+		$data['action'] = 'login/login';
+		$this->load->view('login/login', $data);
+	}
+
+	/**
+	 * 登录
+	 */
+	public function login()
+	{
+		$this->load->service('login/login_service');
+		$protomsg = $this->input->post();
+		$protoinfo = $this->login_service->c2s_login_login($protomsg);
+
+		echo json_encode($protoinfo);
 	}
 }

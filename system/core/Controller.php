@@ -81,7 +81,7 @@ class CI_Controller {
 		// 如果客户端传来cookie数据,则开启session,否则在服务端只有
 		// 在确定客户端登陆成功时才开启session存放基本数据
 		$sess_cookie_name = config_item('sess_cookie_name');
-		if (array_key_exists($sess_cookie_name, $_COOKIE))
+		if ($this->input->cookie($sess_cookie_name) !== NULL)
 		{
 			$this->load->library('session');
 		}

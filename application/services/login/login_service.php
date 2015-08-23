@@ -9,10 +9,9 @@ class Login_service extends CI_Service {
 		parent::__construct();
 	}
 
-	public function index()
+	public function c2s_login_login($protomsg)
 	{
-		$CI =& get_instance();
-		$data['action'] = '';
-		$CI->load->view('login/login', $data);
+		$protomsg['ret'] = TRUE;
+		return $protomsg;
 	}
 }
