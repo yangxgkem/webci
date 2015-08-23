@@ -75,11 +75,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * ------------------------------------------------------
  */
 	require_once(BASEPATH.'core/Common.php');
-	if (file_exists(APPPATH.'core/MY_Common.php'))
-	{
-		require_once(APPPATH.'core/MY_Common.php');
-	}
-
 
 /*
  * ------------------------------------------------------
