@@ -86,6 +86,12 @@ class CI_Controller {
 			$this->load->library('session');
 		}
 
+		//调试状态下开启打印信息
+		if (ENVIRONMENT === 'development')
+		{
+			$this->output->enable_profiler(TRUE);
+		}
+
 		log_message('info', 'Controller Class Initialized');
 	}
 
