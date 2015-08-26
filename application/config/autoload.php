@@ -138,3 +138,19 @@ $autoload['language'] = array();
 */
 
 $autoload['model'] = array();
+
+
+/*
+| -------------------------------------------------------------------
+|  Auto-load Services
+| -------------------------------------------------------------------
+| Prototype:
+|
+|	$autoload['service'] = array('first_service', 'second_service');
+|
+| You can also supply an alternative service name to be assigned
+| in the controller:
+|
+|	$autoload['service'] = array('first_service' => 'first');
+*/
+$autoload['service'] = array('user/user_service' => 'userObj');

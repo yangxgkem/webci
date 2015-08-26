@@ -5,6 +5,8 @@ class App extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+
+		$this->output->enable_profiler(FALSE);
 	}
 
 	/**
@@ -25,13 +27,18 @@ class App extends CI_Controller {
 	 */
 	public function checkproto()
 	{
-		//协议名称
-		$protomsg = json_decode($this->input->raw_input_stream, true);
+		$CI =& get_instance();
+		
+		$protomsg = $this->input->raw_input_stream;
+		$protomsg = $this->security->xss_clean($protomsg);
+		$protomsg = json_decode($protomsg, true);
 		if ( ! $protomsg)
 		{
 			$this->senderror(404, 'protomsg decode error');
 			return;
 		}
+
+		//协议名称
 		$pname = $protomsg['pname'];
 
 		//载入协议名模块
@@ -62,8 +69,12 @@ class App extends CI_Controller {
 			return;
 		}
 
+		//启动session
+		$CI->load->library('session');
+
 		//执行业务并返回数据给客户端
-		$protoinfo = call_user_func_array(array($this->$service[1], $pname), array($protomsg));
+		call_user_func_array(array($this->$service[1], $pname), array($protomsg));
+		$protoinfo = $CI->userObj->get_send_data();
 		if ($protoinfo)
 		{
 			echo json_encode($protoinfo);

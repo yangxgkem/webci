@@ -59,23 +59,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 
-$active_group = 'haody_guide';
+$active_group = 'guide';
 $query_builder = TRUE;
 
 /**
  * 导游数据库
  * 包含数据:导游基本信息,导游通讯录
  */
-$db['haody_guide'] = array(
+$db['guide'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => 'root',
-	'database' => 'news',
+	'database' => '',
 	'dbdriver' => 'mysqli', //mysqli和mysql都是mysql函数集, mysqli比mysql更高级,方法方面更全
 	'dbprefix' => '',
 	'pconnect' => TRUE,
-	'db_debug' => TRUE,
+	'db_debug' => FALSE,
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+
+/**
+ * 行程数据库
+ * 包含数据:行程数据
+ */
+$db['hitu_trip'] = array(
+	'dsn'	=> '',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => 'root',
+	'database' => '',
+	'dbdriver' => 'mysqli', //mysqli和mysql都是mysql函数集, mysqli比mysql更高级,方法方面更全
+	'dbprefix' => '',
+	'pconnect' => TRUE,
+	'db_debug' => FALSE,
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',
@@ -90,18 +116,18 @@ $db['haody_guide'] = array(
 
 /**
  * 游客数据
- * 包含数据:游客数据
+ * 包含数据:游客基本数据,印象数据,关联行程数据
  */
-$db['haody_user'] = array(
+$db['hitu_user'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => 'root',
-	'database' => 'haody_user_0001',
+	'database' => '',
 	'dbdriver' => 'mysqli', //mysqli和mysql都是mysql函数集, mysqli比mysql更高级,方法方面更全
 	'dbprefix' => '',
 	'pconnect' => TRUE,
-	'db_debug' => TRUE,
+	'db_debug' => FALSE,
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',
