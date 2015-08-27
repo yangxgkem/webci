@@ -10,13 +10,18 @@ web服务器：nginx 1.4.6
 
 除了unbuntu必须要64位,ci3.0外，其他环境安装最新即可
 
+安装脚本查看：
+systool.py
+
 
 官方ci框架版本库：
 https://github.com/bcit-ci/CodeIgniter
 
+ci文档：
+http://codeigniter.org.cn/user_guide/general/welcome.html
 
-安装脚本查看：
-systool.py
+
+
 
 =======================================================================
 
@@ -37,3 +42,30 @@ cd,cp,rm,mv,kill,mount,top,md5sum,grep,ssh,curl,wget,tail,tar,makefile,rsync,df,
 7. 知道浏览器如何通过http/https与web server交互，中间涉及了有哪些数据传输
 
 8. 会用session 和 cookie，如何预防XSS 和 CSRF
+
+
+
+
+=======================================================================
+
+开发目录说明：
+尽可能不要修改system下的代码，它属于框架层，业务层应该全部放到application下进行；
+app导游涉及到的控制层只有一个：application/controllers/App.php，简化控制层管理，和兼容后期web端开发。
+
+@1
+确定开发玩法模块，定制两端通讯协议文件
+application/protocol/模块协议文件
+application/protocol/protocol_name.php
+
+@2
+设计数据库模型，并开发相应数据存取接口，此处设计是重点，包括缓存memcached和mysql如何搭配设计使用，可参考
+导游数据例子：application/models/guide_model.php
+
+@3
+开发业务功能
+application/services/业务脚本
+application/language/业务涉及文案
+
+@4
+服务端测试
+参考 application/test/php_curl_demo.php
