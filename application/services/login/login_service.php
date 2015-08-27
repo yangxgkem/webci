@@ -11,7 +11,8 @@ class Login_service extends CI_Service {
 
 		//加载需要调用到的模块,包括service 和 model
 		$CI =& get_instance();
-		$CI->load->model('guide_model');
+		$CI->load->model('guide_model');//数据库
+		$CI->lang->load('login_service');//文案
 	}
 
 	/**
@@ -35,7 +36,7 @@ class Login_service extends CI_Service {
 		{
 			$protoinfo = array(
 				'errno' => 401,
-				'errmsg' => '账号或密码有误,请重新输入',
+				'errmsg' => $CI->lang->line('login_01'),
 			);
 			return $CI->userObj->send_proto('s2c_login_login', $protoinfo);
 		}
@@ -46,7 +47,7 @@ class Login_service extends CI_Service {
 		{
 			$protoinfo = array(
 				'errno' => 402,
-				'errmsg' => '账号或密码有误,请重新输入',
+				'errmsg' => $CI->lang->line('login_01'),
 			);
 			return $CI->userObj->send_proto('s2c_login_login', $protoinfo);
 		}
@@ -94,7 +95,7 @@ class Login_service extends CI_Service {
 		{
 			$protoinfo = array(
 				'errno' => 401,
-				'errmsg' => '填入数据长度有误',
+				'errmsg' => $CI->lang->line('login_02'),
 			);
 			return $CI->userObj->send_proto('s2c_login_register_check', $protoinfo);
 		}
@@ -103,7 +104,7 @@ class Login_service extends CI_Service {
 		{
 			$protoinfo = array(
 				'errno' => 402,
-				'errmsg' => '该手机号码已被注册',
+				'errmsg' => $CI->lang->line('login_03'),
 			);
 			return $CI->userObj->send_proto('s2c_login_register_check', $protoinfo);
 		}
@@ -142,7 +143,7 @@ class Login_service extends CI_Service {
 		{
 			$protoinfo = array(
 				'errno' => 401,
-				'errmsg' => '您输入的验证码有误',
+				'errmsg' => $CI->lang->line('login_04'),
 			);
 			return $CI->userObj->send_proto('s2c_login_register_result', $protoinfo);
 		}
@@ -156,7 +157,7 @@ class Login_service extends CI_Service {
 		{
 			$protoinfo = array(
 				'errno' => 402,
-				'errmsg' => '数据操作有误',
+				'errmsg' => $CI->lang->line('login_05'),
 			);
 			return $CI->userObj->send_proto('s2c_login_register_result', $protoinfo);
 		}
@@ -186,7 +187,7 @@ class Login_service extends CI_Service {
 		{
 			$protoinfo = array(
 				'errno' => 401,
-				'errmsg' => '填入数据长度有误',
+				'errmsg' => $CI->lang->line('login_02'),
 			);
 			return $CI->userObj->send_proto('s2c_login_guide_check', $protoinfo);
 		}
@@ -195,7 +196,7 @@ class Login_service extends CI_Service {
 		{
 			$protoinfo = array(
 				'errno' => 402,
-				'errmsg' => '执行步骤有误',
+				'errmsg' => $CI->lang->line('login_06'),
 			);
 			return $CI->userObj->send_proto('s2c_login_guide_check', $protoinfo);
 		}
@@ -213,7 +214,7 @@ class Login_service extends CI_Service {
 		{
 			$protoinfo = array(
 				'errno' => 403,
-				'errmsg' => '数据操作有误',
+				'errmsg' => $CI->lang->line('login_05'),
 			);
 			return $CI->userObj->send_proto('s2c_login_guide_check', $protoinfo);
 		}
