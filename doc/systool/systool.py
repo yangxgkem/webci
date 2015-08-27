@@ -95,7 +95,6 @@ ulimit -v unlimited
 #添加系统用户
 def add_all_user():
 	all_user = (
-		("yangxg","ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQCt10oJtgagUsy0jCwO7Q9KC+3khaSSbf2LYjOLSY5ODUB/7kuioA4R3Alu3achLinFZmfLGO0ufGxvBvUEaiwyL1YuZpBvgUxhzT4aRuKaDVpc8XkeN9AIwTUXY/T2ObKDYqN7Vmm9cfPfIvKD7uQtiQxQLB90Gvw1s/rU4GBgrQ== "),
 	)
 	for data in all_user:
 		username = data[0]
