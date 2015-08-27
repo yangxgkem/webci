@@ -1,0 +1,39 @@
+导游app后端web搭建
+
+开发环境：
+系统：ubuntu 64位
+web服务器：nginx 1.4.6
+数据库：mysql 14.14
+缓存：memcached
+开发语言：php 5.5.9
+框架：codeigniter 3.0(ci) php框架
+
+除了unbuntu必须要64位,ci3.0外，其他环境安装最新即可
+
+
+官方ci框架版本库：
+https://github.com/bcit-ci/CodeIgniter
+
+
+安装脚本查看：
+systool.py
+
+=======================================================================
+
+开发导游app后端所需要技术：
+1. linux常用指令：
+cd,cp,rm,mv,kill,mount,top,md5sum,grep,ssh,curl,wget,tail,tar,makefile,rsync,df,fstab,group,iconv
+
+2. 如何搭建nginx和配置，正向代理和反向代理
+
+3. cgi,fastcgi,php-fpm原理
+
+4. mysql引擎innodb和myisam区别和使用，熟悉读写分离和使用，大数据分表分库
+
+5. memcached配置，如何配合mysql使用
+
+6. 编写php语言，面向对象，单例程框架，熟悉ci，laravel更好
+
+7. 知道浏览器如何通过http/https与web server交互，中间涉及了有哪些数据传输
+
+8. 会用session 和 cookie，如何预防XSS 和 CSRF
