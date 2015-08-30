@@ -26,11 +26,9 @@ class Guide_model extends CI_Model {
 		{
 			return;
 		}
-
-		$CI =& get_instance();
-		$this->db = $CI->load->database('guide', TRUE);
-		$this->dbutil = $CI->load->dbutil($this->db, TRUE);
-		$this->dbforge = $CI->load->dbforge($this->db, TRUE);
+		$this->db = $this->load->database('guide', TRUE);
+		$this->dbutil = $this->load->dbutil($this->db, TRUE);
+		$this->dbforge = $this->load->dbforge($this->db, TRUE);
 	}
 
 	/**
@@ -110,8 +108,6 @@ class Guide_model extends CI_Model {
 	 */
 	public function add_guide($data = array())
 	{
-		$CI =& get_instance();
-		
 		$this->connectdb();
 		$this->checkdb();
 		$this->check_guide_table();
@@ -123,7 +119,7 @@ class Guide_model extends CI_Model {
 		{
 			return FALSE;
 		}
-		$CI->cache->save(MEM_GUIDE_TBL.$data['phone'], $data, 1800);
+		$this->cache->save(MEM_GUIDE_TBL.$data['phone'], $data, 1800);
 
 		return TRUE;
 	}
@@ -133,8 +129,6 @@ class Guide_model extends CI_Model {
 	 */
 	public function update_guide($phone, $data = array())
 	{
-		$CI =& get_instance();
-
 		$this->connectdb();
 		$this->checkdb();
 		$this->check_guide_table();
@@ -148,14 +142,14 @@ class Guide_model extends CI_Model {
 		{
 			return FALSE;
 		}
-		$memdata = $CI->cache->get(MEM_GUIDE_TBL.$phone);
+		$memdata = $this->cache->get(MEM_GUIDE_TBL.$phone);
 		if ($memdata)
 		{
 			foreach ($data as $key => $value)
 			{
 				$memdata[$key] = $value;
 			}
-			$CI->cache->save(MEM_GUIDE_TBL.$phone, $memdata, 1800);
+			$this->cache->save(MEM_GUIDE_TBL.$phone, $memdata, 1800);
 		}
 
 		return TRUE;
@@ -166,9 +160,7 @@ class Guide_model extends CI_Model {
 	 */
 	public function get_guide_data($id)
 	{
-		$CI =& get_instance();
-
-		$data = $CI->cache->get(MEM_GUIDE_TBL.$id);
+		$data = $this->cache->get(MEM_GUIDE_TBL.$id);
 		if ($data)
 		{
 			return $data;
@@ -187,7 +179,7 @@ class Guide_model extends CI_Model {
 		if ($query->num_rows() > 0)
 		{
 			$data = $query->row_array();
-			$CI->cache->save(MEM_GUIDE_TBL.$id, $data, 1800);
+			$this->cache->save(MEM_GUIDE_TBL.$id, $data, 1800);
 			return $data;
 		}
 	}

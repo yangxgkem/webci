@@ -27,8 +27,6 @@ class App extends CI_Controller {
 	 */
 	public function checkproto()
 	{
-		$CI =& get_instance();
-		
 		$protomsg = $this->input->raw_input_stream;
 		$protomsg = $this->security->xss_clean($protomsg);
 		$protomsg = json_decode($protomsg, true);
@@ -70,11 +68,11 @@ class App extends CI_Controller {
 		}
 
 		//启动session
-		$CI->load->library('session');
+		$this->load->library('session');
 
 		//执行业务并返回数据给客户端
 		call_user_func_array(array($this->$service[1], $pname), array($protomsg));
-		$protoinfo = $CI->userObj->get_send_data();
+		$protoinfo = $this->userObj->get_send_data();
 		if ($protoinfo)
 		{
 			echo json_encode($protoinfo);
