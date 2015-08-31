@@ -124,10 +124,11 @@ class CI_Session_files_driver extends CI_Session_driver implements SessionHandle
 			throw new Exception("Session: Configured save path '".$this->_config['save_path']."' is not writable by the PHP process.");
 		}
 
+		$CI =& get_instance();
 		$this->_config['save_path'] = $save_path;
 		$this->_file_path = $this->_config['save_path'].DIRECTORY_SEPARATOR
 			.$name // we'll use the session cookie name as a prefix to avoid collisions
-			.($this->_config['match_ip'] ? md5($_SERVER['REMOTE_ADDR']) : '');
+			.($this->_config['match_ip'] ? md5($CI->input->ip_address()) : '');
 
 		return TRUE;
 	}

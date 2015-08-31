@@ -503,5 +503,7 @@ $config['rewrite_short_tags'] = FALSE;
 |
 | Comma-separated:	'10.0.1.200,192.168.5.0/24'
 | Array:		array('10.0.1.200', '192.168.5.0/24')
+|
+| 配置反向代理服务器IP, 通过$CI->input->ip_address() 可获得真实请求客户端IP
 */
-$config['proxy_ips'] = '';
+$config['proxy_ips'] = '192.168.247.129';
