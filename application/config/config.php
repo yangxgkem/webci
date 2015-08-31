@@ -506,4 +506,4 @@ $config['rewrite_short_tags'] = FALSE;
 |
 | 配置反向代理服务器IP, 通过$CI->input->ip_address() 可获得真实请求客户端IP
 */
-$config['proxy_ips'] = '192.168.247.129';
+$config['proxy_ips'] = '192.168.0.0/16';
