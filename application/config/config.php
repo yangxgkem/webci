@@ -221,8 +221,9 @@ $config['log_threshold'] = array(1);
 | Leave this BLANK unless you would like to set something other than the default
 | application/logs/ directory. Use a full server path with trailing slash.
 |
+| 请使用绝对路径
 */
-$config['log_path'] = 'logs/';
+$config['log_path'] = FCPATH.'logs/';
 
 /*
 |--------------------------------------------------------------------------
@@ -281,7 +282,7 @@ $config['error_views_path'] = '';
 | application/cache/ directory.  Use a full server path with trailing slash.
 |
 */
-$config['cache_path'] = 'cache/';
+$config['cache_path'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -358,7 +359,7 @@ $config['encryption_key'] = '';
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'hdy_sess';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = 'sessdata/';
+$config['sess_save_path'] = FCPATH.'sessdata/';
 $config['sess_match_ip'] = TRUE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = TRUE;
