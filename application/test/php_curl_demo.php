@@ -52,4 +52,5 @@ $protomsg = array(
 
 $data = json_encode($protomsg); 
 $ret = http_post_data($url, $data);
+echo $ret;
 echo var_dump(json_decode($ret, TRUE));

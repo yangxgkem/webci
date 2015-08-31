@@ -131,9 +131,9 @@ if ( ! is_php('5.4'))
  *  Define a custom error handler so we can log PHP errors
  * ------------------------------------------------------
  */
-	set_error_handler('_error_handler');
-	set_exception_handler('_exception_handler');
-	register_shutdown_function('_shutdown_handler');
+	set_error_handler('_error_handler');//用户自定义的错误处理函数
+	set_exception_handler('_exception_handler');//用户自定义的异常处理函数
+	register_shutdown_function('_shutdown_handler');//执行结束或异常结束时调用
 
 /*
  * ------------------------------------------------------

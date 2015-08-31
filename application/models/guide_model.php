@@ -106,7 +106,7 @@ class Guide_model extends CI_Model {
 	/**
 	 * 添加导游
 	 */
-	public function add_guide($data = array())
+	public function add_guide($data)
 	{
 		$this->connectdb();
 		$this->checkdb();
@@ -127,7 +127,7 @@ class Guide_model extends CI_Model {
 	/**
 	 * 修改导游数据
 	 */
-	public function update_guide($phone, $data = array())
+	public function update_guide($phone, $data)
 	{
 		$this->connectdb();
 		$this->checkdb();
