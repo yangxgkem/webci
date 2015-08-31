@@ -851,7 +851,7 @@ if ( ! function_exists('function_usable'))
 if ( ! function_exists('print_stack_trace'))
 {
 	/**
-	 * ´òÓ¡º¯Êıµ÷ÓÃ¶ÑÕ»
+	 * æ‰“å°å‡½æ•°è°ƒç”¨å †æ ˆ
 	 */
 	function print_stack_trace()
 	{
@@ -861,7 +861,7 @@ if ( ! function_exists('print_stack_trace'))
 		$html = '===============================print_stack_trace================================='.'<p>';
 		foreach ($array as $row) 
 		{
-			$html .= $row['file'].':'.$row['line'].'ĞĞ, µ÷ÓÃ·½·¨:'.$row['function'].'<p>';
+			$html .= $row['file'].':'.$row['line'].'è¡Œ, è°ƒç”¨æ–¹æ³•:'.$row['function'].'<p>';
 		}
 		$html .= '================================================================'.'<p>';
 		echo $html;

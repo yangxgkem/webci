@@ -46,11 +46,45 @@ $protomsg = array(
     'guide_id' => 'D-1308-001807',
     'id_card' => '540781199110174715',
 );
-/*
 
-*/
+
+
 
 $data = json_encode($protomsg); 
 $ret = http_post_data($url, $data);
 echo $ret;
 echo var_dump(json_decode($ret, TRUE));
+
+
+/*
+function _error_handler($severity, $message, $filepath, $line)
+{
+    echo $severity, $message, $filepath, $line;
+    if ( ! $fp = @fopen('err.log', 'ab'))
+    {
+        return FALSE;
+    }
+    flock($fp, LOCK_EX);
+    for ($written = 0, $length = strlen($message); $written < $length; $written += $result)
+    {
+        if (($result = fwrite($fp, substr($message, $written))) === FALSE)
+        {
+            break;
+        }
+    }
+
+    flock($fp, LOCK_UN);
+    fclose($fp);
+}
+
+
+error_reporting(-1);
+ini_set('display_errors', 1);
+set_error_handler('_error_handler');//用户自定义的错误处理函数
+
+
+$dd = 'asdf';
+if ($dd === $ddd)
+{
+    echo 'asdfasdf';
+}*/
