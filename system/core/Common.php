@@ -861,7 +861,7 @@ if ( ! function_exists('print_stack_trace'))
 		$html = '===============================print_stack_trace================================='.'<p>';
 		foreach ($array as $row) 
 		{
-			$html .= $row['file'].':'.$row['line'].'行, 调用方法:'.$row['function'].'<p>';
+			$html .= $row['file'].':'.$row['line'].'line, call func:'.$row['function'].'<p>';
 		}
 		$html .= '================================================================'.'<p>';
 		echo $html;

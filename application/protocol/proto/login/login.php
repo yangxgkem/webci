@@ -1,4 +1,4 @@
-<? php
+<?php
 
 //登录
 $c2s_login_login = array(
