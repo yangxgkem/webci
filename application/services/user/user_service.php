@@ -74,6 +74,19 @@ class User_service extends CI_Service {
 	}
 
 	/**
+	 * 用户是否已登录
+	 */
+	public function is_login()
+	{
+		$login_status = $this->get_status();
+		if ($login_status === LOGIN_STATUS_SUCC)
+		{
+			return TRUE;
+		}
+		return FALSE;
+	}
+
+	/**
 	 * 清空用户缓存数据
 	 */
 	public function clear_cache()

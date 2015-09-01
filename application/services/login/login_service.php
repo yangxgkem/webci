@@ -39,8 +39,8 @@ class Login_service extends CI_Service {
 		}
 
 		//验证密码
-		$pw = password_hash($protomsg['pw'], PASSWORD_DEFAULT);
-		if ($pw !== $data['password'])
+		$istrue = password_verify($protomsg['pw'], $data['password']);
+		if ( ! $istrue)
 		{
 			$protoinfo = array(
 				'errno' => 402,
@@ -48,6 +48,9 @@ class Login_service extends CI_Service {
 			);
 			return $this->userObj->send_proto('s2c_login_login', $protoinfo);
 		}
+		
+		//启动session
+		$this->load->library('session');
 
 		$this->userObj->set_status(LOGIN_STATUS_01);
 		$this->userObj->login_check($data);
@@ -68,6 +71,8 @@ class Login_service extends CI_Service {
 			'errno' => 0,
 		);
 		$this->userObj->send_proto('s2c_login_login', $protoinfo);
+
+		log_message('error', $this->input->ip_address());
 	}
 
 	/**

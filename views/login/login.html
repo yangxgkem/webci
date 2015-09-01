@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hitu-online</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="icon" href="assets/img/hitu.png">
+
+    <!-- 登录css -->
+    <link rel="stylesheet" href="assets/css/login.css">
+</head>
+
+<body>
+<div class="container">
+    <h1>HITU ONLINE</h1>
+    <!-- 登录界面 -->
+    <div id="content" class="container-fluid ">
+        <div class="row">
+            <div class="container col-md-12 main">
+                <div class=" form-signin">
+                    <div class="form-group">
+                        <input name="id" type="text" id="id" class="form-control" placeholder="输入您的手机或导游证" required="" autofocus="">
+                    </div>
+                    <div class="form-group">
+                        <input name="pw" type="password" id="pw" class="form-control" placeholder="输入您的密码" required="">
+                    </div>
+                    <div class="text-right">
+                        <u><a href="#">忘记密码?</a></u>
+                    </div>
+                    <div class="text-left">
+                        <label>
+                            <input type="checkbox" value="remember-me"> 记住我
+                        </label>
+                    </div>
+                    <button id="loginbtn" class="btn btn-success btn-block" onclick="login()" type="button">
+                        登录
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 登录失败模态框 -->
+<div class="modal fade" id="login_fail_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title" id="login_fail_title">登录失败</h5>
+            </div>
+            <div class="modal-body">
+                <p id="login_fail_msg">您输入的账号或密码有误</p>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</body>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- 登录js -->
+<script src="assets/js/login.js"></script>
+
+</html>

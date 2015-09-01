@@ -12,8 +12,7 @@ class Login extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data['action'] = 'login/login';
-		$this->load->view('login/login', $data);
+		$this->load->view('login/login.html');
 	}
 
 	/**
@@ -22,7 +21,6 @@ class Login extends CI_Controller {
 	public function login()
 	{
 		$protomsg = $this->input->post();
-		echo var_dump($protomsg);
 		$this->load->service('login/login_service');
 		$this->login_service->c2s_login_login($protomsg);
 		$protoinfo = $this->userObj->get_send_data();

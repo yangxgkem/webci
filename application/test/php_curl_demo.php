@@ -29,24 +29,25 @@ $url  = "http://127.0.0.1:6001/App/checkproto";
 $protomsg = array(
     'pname'=>'c2s_login_register',
     'zone' => '+86',
-    'id' => '159159159152',
-    'pw' => 'root~!@#$%^&*()',
+    'id' => '123456789',
+    'pw' => '123456789',
 );
 
 
 $protomsg = array(
     'pname'=>'c2s_login_code',
-    'code' => '183475',
+    'code' => '698720',
 );
 
 
 $protomsg = array(
     'pname'=>'c2s_login_guide_check',
     'name' => '呵呵哒',
-    'guide_id' => 'D-1308-001807',
-    'id_card' => '540781199110174715',
+    'guide_id' => 'D-1308-123456',
+    'id_card' => '123456789123456789',
 );
-
+/*
+*/
 
 
 
