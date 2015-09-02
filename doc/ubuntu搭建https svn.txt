@@ -1,0 +1,47 @@
+ubuntu 搭建 https svn
+
+参考：
+http://blog.csdn.net/b_h_l/article/details/39023849
+http://blog.csdn.net/jk0803_wantao/article/details/9233561
+
+
+1.安装svn
+apt-get install subversion
+
+
+2.搭建svn仓库
+mkdir /home/svn
+mkdir /home/svn/demop
+svnadmin create /home/svn/demop
+
+3.启动svn
+svnserve -d -r /home/svn
+
+4.测试检出
+svn co svn://192.168.247.131/demop test
+
+
+====================================================================
+
+1.安装apache2
+sudo apt-get install apache2
+sudo apt-get install libapache2-svn
+
+
+2.检查apache2是否已安装
+访问：http://ip
+
+
+3.编辑：etc/apache2/mods-available/dav_svn.conf
+<Location /svn >
+DAV svn
+SVNParentPath /home/svn
+SVNListParentPath On
+AuthType Basic
+AuthName "welcome to hitu subversion repository"
+AuthUserFile /home/svn/passwd
+AuthzSVNAccessFile /home/svn/authz.conf
+Require valid-user
+#SSLRequireSSL #配置https时开启
+</Location>
+
