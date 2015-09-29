@@ -12,20 +12,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *可以考虑在controller和model中加一个业务层service，由它来负责业务逻辑，封装好的调用接口可以被controller复用。
  *这样各层的任务就明确了：
  *
- *Model(DAO):数据持久层的工作，对数据库的操作都封装在这。
+ *Model: 数据持久层的工作，对数据库的操作都封装在这。
  *
- *Service ： 业务逻辑层，负责业务模块的逻辑应用设计，controller中就可以调用service的接口实现业务逻辑处理，
+ *Service: 业务逻辑层，负责业务模块的逻辑应用设计，controller中就可以调用service的接口实现业务逻辑处理，
  *提高了通用的业务逻辑的复用性，设计到具体业务实现会调用Model的接口。
  *
- * Controller ：控制层，负责具体业务流程控制，这里调用service层，将数据返回到视图
+ * Controller: 控制层，负责具体业务流程控制，这里调用service层，将数据返回到视图
  * 
- * View ： 负责前端页面展示，与Controller紧密联系。
+ * View: 负责前端页面展示，与Controller紧密联系。
  */
 class CI_Service {
 
 	public function __construct()
 	{
-		log_message('info', 'My Service Class Initialized');
+		log_message('info', 'Service Class Initialized');
 	}
 
 	//__get()方法用来获取私有属性 php面向对象一种内置方法,需要手动添加__get才会调用
