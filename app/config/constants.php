@@ -87,32 +87,7 @@ define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 
 //登录状态
-define('LOGIN_STATUS_00', 0); // 登录中
-define('LOGIN_STATUS_01', 1); // 注册中
-define('LOGIN_STATUS_02', 2); // 短信验证中
-define('LOGIN_STATUS_03', 3); // 验证导游证中
-define('LOGIN_STATUS_04', 4); // 找回密码中
-define('LOGIN_STATUS_05', 5); // 输入新密码中
+define('LOGIN_STATUS_LOGIN', 0); // 登录中
 define('LOGIN_STATUS_SUCC', 100); // 登录成功
 
 //memcached前缀
-define('MEM_GUIDE_ID', 'guide_id_'); // 导游前缀
-define('MEM_GUIDE_PHONE', 'guide_phone_'); //根据phone指向id
-define('MEM_GUIDE_EMAIL', 'guide_email_'); //根据email指向id
-
-define('MEM_NOTEBOOK_TBL', 'notebook_tbl_'); // 记事本前缀
-define('MEM_SYSTIPS_TBL', 'systips_tbl_'); // 系统消息前缀
-define('MEM_GUIDE_SYSTIPS_TBL', 'guide_systips_tbl_'); // 导游系统消息前缀
-
-define('MEM_GUIDE_TRIP_ID', 'guide_trip_tbl_'); // 导游行程id列表信息前缀
-
-define('MEM_TRIP_ID', 'trip_tbl_'); // 行程基本信息前缀
-
-define('MEM_TRIPCONTENT_ID', 'tripcontent_tbl_'); // 行程内容信息前缀
-
-define('MEM_TRIPADDR_ID', 'tripaddr_tbl_'); // 行程通讯录信息前缀
-
-define('MEM_ROLLCALL_ID', 'rollcall_tbl_'); // 点名模块信息前缀
-
-define('MEM_TOURIST_ID', 'rollcall_tbl_'); // 游客大数据前缀
-define('MEM_IMPRESS_ID', 'rollcall_tbl_'); // 游客大数据印象标签前缀

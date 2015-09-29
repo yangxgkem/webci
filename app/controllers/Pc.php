@@ -9,9 +9,7 @@ class Pc extends CI_Controller {
 		$this->output->enable_profiler(FALSE);
 	}
 	
-	/**
-	 * PC协议处理
-	 */
+	//PC协议处理
 	public function checkproto()
 	{
 		//执行业务并返回数据给客户端
@@ -23,29 +21,10 @@ class Pc extends CI_Controller {
 		}
 	}
 
-	/**
-	 * 打开登录界面
-	 */
-	public function login()
-	{
-		$this->load->view('pc/login.html');
-	}
-
-	/**
-	 * 打开指令界面
-	 */
+	//打开指令界面
 	public function cmd()
 	{
 		if ( ! $this->userObj->is_login()) return;
 		$this->load->view('pc/cmd.html');
-	}
-
-	/**
-	 * 打开基本信息界面
-	 */
-	public function baseinfo()
-	{
-		if ( ! $this->userObj->is_login()) return;
-		$this->load->view('pc/baseinfo.html');
 	}
 }

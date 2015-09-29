@@ -59,66 +59,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 
-$active_group = 'guide';
+$active_group = 'log';
 $query_builder = TRUE;
 
-/**
- * 导游数据库
- * 包含数据:导游基本信息
- */
-$db['guide'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => 'root',
-	'port' => 3306,
-	'database' => '',
-	'dbdriver' => 'mysqli', //mysqli和mysql都是mysql函数集, mysqli比mysql更高级,方法方面更全
-	'dbprefix' => '',
-	'pconnect' => TRUE,
-	'db_debug' => FALSE,
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
 
-/**
- * 国家导游数据库
- */
-$db['country_guide'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => 'root',
-	'port' => 3306,
-	'database' => '',
-	'dbdriver' => 'mysqli', //mysqli和mysql都是mysql函数集, mysqli比mysql更高级,方法方面更全
-	'dbprefix' => '',
-	'pconnect' => TRUE,
-	'db_debug' => FALSE,
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
-
-/**
- * 印象数据库
- */
-$db['tourist'] = array(
+//日志数据库
+$db['log'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',

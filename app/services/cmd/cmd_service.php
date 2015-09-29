@@ -1,8 +1,6 @@
 <?php
 
-/**
- * 行程模块
- */
+
 class Cmd_service extends CI_Service {
 
 	//指令列表 执行函数,权限,描述
@@ -25,9 +23,7 @@ class Cmd_service extends CI_Service {
 		parent::__construct();
 	}
 
-	/**
-	 * 执行指令
-	 */
+	//执行指令
 	public function c2s_cmd_cmd($protomsg)
 	{
 		
@@ -73,9 +69,7 @@ class Cmd_service extends CI_Service {
 		}
 	}
 
-	/**
-	 * protomsg指令
-	 */
+	//protomsg指令
 	public function check_protomsg($args = "")
 	{
 		$this->load->service('cmd/protomsg_service');

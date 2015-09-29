@@ -5,9 +5,7 @@ class Base_model extends CI_Model {
 	//连接数据库列表
 	public $conlist = array();
 
-	/**
-	 * 连接数据库
-	 */
+	//连接数据库
 	public function connectdb($confname)
 	{
 		if (isset($this->conlist[$confname])) {

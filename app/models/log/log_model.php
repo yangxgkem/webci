@@ -12,14 +12,12 @@ class Log_model extends CI_Model {
 	public $dbforge;
 
 	//行程数据库名称
-	public $db_name = 'hitudb_guide';
+	public $db_name = 'db_log';
 
 	//行程基本数据表名称
 	public $tbl_name = 'log_';
 
-	/**
-	 * 连接数据库
-	 */
+	//连接数据库
 	public function connectdb()
 	{
 		if ($this->db !== NULL) {
@@ -31,9 +29,7 @@ class Log_model extends CI_Model {
 		$this->dbforge = $data['dbforge'];
 	}
 
-	/**
-	 * 校验数据库
-	 */
+	//校验数据库
 	public function checkdb($dbname = NULL)
 	{
 		if ( ! $dbname) {
@@ -52,9 +48,7 @@ class Log_model extends CI_Model {
 		$this->db->db_select($dbname);
 	}
 
-	/**
-	 * 校验数据表
-	 */
+	//校验数据表
 	public function check_trip_table($tblname = NULL)
 	{
 		if ( ! $tblname) {
@@ -85,9 +79,7 @@ class Log_model extends CI_Model {
 		return $this->tbl_name.date("Ym",strtotime('now'));
 	}
 
-	/**
-	 * 添加日志
-	 */
+	//添加日志
 	public function addlog($data)
 	{
 		$tblname = $this->get_tblname();

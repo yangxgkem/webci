@@ -1,8 +1,6 @@
 <?php
 
-/**
- * 上传模块
- */
+
 class Upload_service extends CI_Service {
 
 	public function __construct()
@@ -10,9 +8,7 @@ class Upload_service extends CI_Service {
 		parent::__construct();
 	}
 
-	/**
-	 * 加载上传类
-	 */
+	//加载上传类
 	public function load_upload($user_conf = array())
 	{
 		//默认配置
@@ -51,9 +47,7 @@ class Upload_service extends CI_Service {
 		$this->upload->initialize($config);
 	}
 
-	/**
-	 * 处理客户端上传过来的数据
-	 */
+	//处理客户端上传过来的数据
 	public function upload_file($type, $params = array())
 	{
 		if ( ! $this->upload->do_upload('uploadedfile')) {

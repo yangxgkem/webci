@@ -1,8 +1,6 @@
 <?php
 
-/**
- * 协议处理模块
- */
+
 class Proto_service extends CI_Service {
 
 	public function __construct()
@@ -10,9 +8,7 @@ class Proto_service extends CI_Service {
 		parent::__construct();
 	}
 
-	/**
-	 * 返回错误信息
-	 */
+	//返回错误信息
 	public function senderror($errno, $errmsg)
 	{
 		$protoinfo = array(
@@ -22,9 +18,7 @@ class Proto_service extends CI_Service {
 		return $this->userObj->send_proto('s2c_pname_error', $protoinfo);
 	}
 
-	/**
-	 * 校验协议数据
-	 */
+	//校验协议数据
 	public function checkprotodata($proto, $data) {
 		foreach ($proto as $key => $value) {
 			//校验是否为空
@@ -139,9 +133,7 @@ class Proto_service extends CI_Service {
 		return TRUE;
 	}
 
-	/**
-	 * 协议处理
-	 */
+	//协议处理
 	public function checkproto()
 	{
 		$protomsg = $this->input->post();

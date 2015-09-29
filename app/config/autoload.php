@@ -153,4 +153,4 @@ $autoload['model'] = array('base_model');
 |
 |	$autoload['service'] = array('first_service' => 'first');
 */
-$autoload['service'] = array('user/user_service' => 'userObj', 'base/efunc_service' => 'efunc');
+$autoload['service'] = array('base/preload_service');

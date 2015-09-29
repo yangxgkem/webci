@@ -1,8 +1,6 @@
 <?php
 
-/**
- * 用户模块
- */
+
 class User_service extends CI_Service {
 
 	//待发送处理数据
@@ -35,9 +33,7 @@ class User_service extends CI_Service {
 		return $this->send_data;
 	}
 
-	/**
-	 * 获取用户数据
-	 */
+	//获取用户数据
 	public function get_sess($key)
 	{
 		if (isset($_SESSION[$key])) {
