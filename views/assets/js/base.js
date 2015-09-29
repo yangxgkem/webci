@@ -81,14 +81,14 @@ function clearCookie() {
 //data 数组
 //callback(data, status) 回调函数
 function post_server(data, callback) {
-  $.post("/pc/checkproto", data, callback);
+  $.post("/proto/checkproto", data, callback);
 }
 
 //向服务器get请求
 //data 数组
 //callback(data, status) 回调函数
 function get_server(data, callback) {
-  $.get("/pc/checkproto", data, callback);
+  $.get("/proto/checkproto", data, callback);
 }
 
 //进入cmd界面

@@ -23,7 +23,7 @@ class Log_model extends CI_Model {
 		if ($this->db !== NULL) {
 			return;
 		}
-		$data = $this->base_model->connectdb('guide');
+		$data = $this->base_model->connectdb('log');
 		$this->db = $data['db'];
 		$this->dbutil = $data['dbutil'];
 		$this->dbforge = $data['dbforge'];
@@ -79,7 +79,6 @@ class Log_model extends CI_Model {
 		$this->connectdb();
 		$this->checkdb();
 		$this->check_trip_table($tblname);
-
 		$this->db->trans_start();
 		$this->db->insert($tblname, $data);
 		$this->db->trans_complete();

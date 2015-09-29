@@ -50,7 +50,6 @@ class Efunc_service extends CI_Service {
 				$msg = $msg.$value."\t";
 			}
 		}
-		$msg = $msg."\n";
 		log_message("error", $msg);
 	}
 
@@ -74,7 +73,6 @@ class Efunc_service extends CI_Service {
 				$msg = $msg.$value."\t";
 			}
 		}
-		$msg = $msg."\n";
 		log_message("error", $msg);
 	}
 }

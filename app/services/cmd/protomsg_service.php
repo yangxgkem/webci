@@ -35,19 +35,10 @@ class Protomsg_service extends CI_Service {
 			print_r($_SESSION);
 		}
 		elseif($cmd == 102) {
-			$data = array(
-				"zone" => "+86",
-				"phone" => "15".strtotime('now'),
-				"password" => password_hash("123456", PASSWORD_DEFAULT),
-				"birthday" => date("Y-m-d H:i:s",strtotime('now')),
-				"sex" => 1,
-				"id_card" => "44078119901".strtotime('now'),
-				"name" => "王晓峰",
-				"guide_id" => "D-1308-003",
-				"email" => "1003@qq.com",
-				"sign" => "我被项目负责人叫去拍黄片了",
-			);
-			$this->guide_model->add_guide($data);
+			$data["test"] = "tetsssst";
+			$data["test2"] = "我们";
+			$this->efunc->addlog("cmd_log", $data);
+			echo "ok!!!";
 		}
 	}
 
