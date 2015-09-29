@@ -1,0 +1,118 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/*
+|--------------------------------------------------------------------------
+| File and Directory Modes
+|--------------------------------------------------------------------------
+|
+| These prefs are used when checking and setting modes when working
+| with the file system.  The defaults are fine on servers with proper
+| security, but you may wish (or even need) to change the values in
+| certain environments (Apache running a separate process for each
+| user, PHP under CGI with Apache suEXEC, etc.).  Octal values should
+| always be used to set the mode correctly.
+|
+*/
+define('FILE_READ_MODE', 0644);
+define('FILE_WRITE_MODE', 0666);
+define('DIR_READ_MODE', 0755);
+define('DIR_WRITE_MODE', 0755);
+
+/*
+|--------------------------------------------------------------------------
+| File Stream Modes
+|--------------------------------------------------------------------------
+|
+| These modes are used when working with fopen()/popen()
+|
+*/
+
+define('FOPEN_READ', 'rb');
+define('FOPEN_READ_WRITE', 'r+b');
+define('FOPEN_WRITE_CREATE_DESTRUCTIVE', 'wb'); // truncates existing file data, use with care
+define('FOPEN_READ_WRITE_CREATE_DESTRUCTIVE', 'w+b'); // truncates existing file data, use with care
+define('FOPEN_WRITE_CREATE', 'ab');
+define('FOPEN_READ_WRITE_CREATE', 'a+b');
+define('FOPEN_WRITE_CREATE_STRICT', 'xb');
+define('FOPEN_READ_WRITE_CREATE_STRICT', 'x+b');
+
+/*
+|--------------------------------------------------------------------------
+| Display Debug backtrace
+|--------------------------------------------------------------------------
+|
+| If set to TRUE, a backtrace will be displayed along with php errors. If
+| error_reporting is disabled, the backtrace will not display, regardless
+| of this setting
+|
+*/
+define('SHOW_DEBUG_BACKTRACE', TRUE);
+
+/*
+|--------------------------------------------------------------------------
+| Exit Status Codes
+|--------------------------------------------------------------------------
+|
+| Used to indicate the conditions under which the script is exit()ing.
+| While there is no universal standard for error codes, there are some
+| broad conventions.  Three such conventions are mentioned below, for
+| those who wish to make use of them.  The CodeIgniter defaults were
+| chosen for the least overlap with these conventions, while still
+| leaving room for others to be defined in future versions and user
+| applications.
+|
+| The three main conventions used for determining exit status codes
+| are as follows:
+|
+|    Standard C/C++ Library (stdlibc):
+|       http://www.gnu.org/software/libc/manual/html_node/Exit-Status.html
+|       (This link also contains other GNU-specific conventions)
+|    BSD sysexits.h:
+|       http://www.gsp.com/cgi-bin/man.cgi?section=3&topic=sysexits
+|    Bash scripting:
+|       http://tldp.org/LDP/abs/html/exitcodes.html
+|
+*/
+define('EXIT_SUCCESS', 0); // no errors
+define('EXIT_ERROR', 1); // generic error
+define('EXIT_CONFIG', 3); // configuration error
+define('EXIT_UNKNOWN_FILE', 4); // file not found
+define('EXIT_UNKNOWN_CLASS', 5); // unknown class
+define('EXIT_UNKNOWN_METHOD', 6); // unknown class member
+define('EXIT_USER_INPUT', 7); // invalid user input
+define('EXIT_DATABASE', 8); // database error
+define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
+define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+
+//登录状态
+define('LOGIN_STATUS_00', 0); // 登录中
+define('LOGIN_STATUS_01', 1); // 注册中
+define('LOGIN_STATUS_02', 2); // 短信验证中
+define('LOGIN_STATUS_03', 3); // 验证导游证中
+define('LOGIN_STATUS_04', 4); // 找回密码中
+define('LOGIN_STATUS_05', 5); // 输入新密码中
+define('LOGIN_STATUS_SUCC', 100); // 登录成功
+
+//memcached前缀
+define('MEM_GUIDE_ID', 'guide_id_'); // 导游前缀
+define('MEM_GUIDE_PHONE', 'guide_phone_'); //根据phone指向id
+define('MEM_GUIDE_EMAIL', 'guide_email_'); //根据email指向id
+
+define('MEM_NOTEBOOK_TBL', 'notebook_tbl_'); // 记事本前缀
+define('MEM_SYSTIPS_TBL', 'systips_tbl_'); // 系统消息前缀
+define('MEM_GUIDE_SYSTIPS_TBL', 'guide_systips_tbl_'); // 导游系统消息前缀
+
+define('MEM_GUIDE_TRIP_ID', 'guide_trip_tbl_'); // 导游行程id列表信息前缀
+
+define('MEM_TRIP_ID', 'trip_tbl_'); // 行程基本信息前缀
+
+define('MEM_TRIPCONTENT_ID', 'tripcontent_tbl_'); // 行程内容信息前缀
+
+define('MEM_TRIPADDR_ID', 'tripaddr_tbl_'); // 行程通讯录信息前缀
+
+define('MEM_ROLLCALL_ID', 'rollcall_tbl_'); // 点名模块信息前缀
+
+define('MEM_TOURIST_ID', 'rollcall_tbl_'); // 游客大数据前缀
+define('MEM_IMPRESS_ID', 'rollcall_tbl_'); // 游客大数据印象标签前缀

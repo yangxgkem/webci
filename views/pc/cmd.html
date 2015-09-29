@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hitu-online</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="icon" href="/assets/img/hitu.png">
+</head>
+<body style="background-color: #eeeeee;">
+<div class="container">
+    <h1>HITU ONLINE</h1>
+    <div class='navbar navbar-inverse'>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#" onclick="goto_baseinfo()">基本信息</a></li>
+                <li class="active"><a href="#", onclick="goto_cmd()">指令执行</a></li>
+                <li><a href="#">导游管理</a></li>
+                <li><a href="#">数据统计</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">系统<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" onclick="goto_bug()">意见反馈</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" onclick="goto_login()">退出登录</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="list-group">
+                <button class="list-group-item" onclick="cmd()">提交指令</button>
+                <button class="list-group-item" onclick="get_session()">查看当前session</button>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <form>
+                <div class="form-group">
+                    <textarea class="form-control" name="protomsg" id="protomsg" placeholder="输入指令内容" rows="4"></textarea>
+                </div>
+            </form>
+            <div>
+                <br>
+                <textarea class="form-control" name="retsult" id="retsult" placeholder="即将返回的结果" rows="20"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 模态框 -->
+<div class="modal fade" id="show_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title" id="model_title">提示</h5>
+            </div>
+            <div class="modal-body">
+                <p id="model_data">这是一条提示内容</p>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</body>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- 登录js -->
+<script src="/assets/js/cmd.js"></script>
+
+</html>
