@@ -24,7 +24,6 @@ class Pc extends CI_Controller {
 	//打开指令界面
 	public function cmd()
 	{
-		if ( ! $this->userObj->is_login()) return;
 		$this->load->view('pc/cmd.html');
 	}
 }
