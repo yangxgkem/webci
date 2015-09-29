@@ -10,17 +10,14 @@ class Cmd_service extends CI_Service {
 	    'protomsg' => array("check_protomsg", 99, "指令"),
 	);
 	//权限表
-	public $powertbl = array(
-	    99 => array(
-	        "127.0.0.1",
-	        "192.168.1.111",
-	        "192.168.1.104",),
-	);
+	public $powertbl;
 
 
 	public function __construct()
 	{
 		parent::__construct();
+		$this->setting_service->load("cmd/cmd_data.php");
+		$this->powertbl = $this->setting_service->get("CmdPowerData");
 	}
 
 	//执行指令
@@ -32,7 +29,7 @@ class Cmd_service extends CI_Service {
 		    $command = substr($command, 1);
 		    $cmddata=explode(" ", $command, 2);
 		    if ( ! isset($cmddata[0])) {
-		    	_RUNTIME_ERROR("you send cmd error");
+		    	$this->efunc->RUNTIME_ERROR("you send cmd error");
 		    	return;
 		    }
 		    
@@ -46,24 +43,25 @@ class Cmd_service extends CI_Service {
 		    
 		    //是否含有此指令
 		    if ( ! isset($this->cmdtbl[$real_cmd])) {
-		    	_RUNTIME_ERROR("not found cmd");
+		    	$this->efunc->RUNTIME_ERROR("not found cmd");
 		        return;
 		    }
 
 		    //校验权限
 		    $power = $this->cmdtbl[$real_cmd][1];
 		    $ip = $this->input->ip_address();
-		    /*
-		    if(! in_array($ip, $this->powertbl[$power])) {
-		        _RUNTIME_ERROR("permission not power");
+		    if(! isset($this->powertbl[$ip]) OR $this->powertbl[$ip] < $power) {
+		        $this->efunc->RUNTIME_ERROR("permission not power", $ip);
 		        return;
-		    }*/
+		    }
+
 		    //是否含有指令函数
 		    $func = $this->cmdtbl[$real_cmd][0];
 		    if ( ! in_array($func, get_class_methods($this))) {
-		        _RUNTIME_ERROR("not found cmd func");
+		        $this->efunc->RUNTIME_ERROR("not found cmd func", $real_cmd);
 		        return;
 		    }
+		    
 		    //执行指令
 		    call_user_func_array(array($this, $func), array($args));
 		}

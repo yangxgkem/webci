@@ -32,16 +32,11 @@ class Log_model extends CI_Model {
 	//校验数据库
 	public function checkdb($dbname = NULL)
 	{
-		if ( ! $dbname) {
-			$dbname = $this->db_name;
-		}
+		if ( ! $dbname) $dbname = $this->db_name;
 
 		if ( ! $this->dbutil->database_exists($dbname)) {
-			if ($this->dbforge->create_database($dbname)) {
-			    log_message('error', 'create database true:'.$dbname.' in guide');
-			}
-			else {
-				log_message('error', 'create database false:'.$dbname.' in guide');
+			if ( ! $this->dbforge->create_database($dbname)) {
+				$this->efunc->RUNTIME_ERROR("create database error", $dbname);
 			}
 		}
 
@@ -51,9 +46,7 @@ class Log_model extends CI_Model {
 	//校验数据表
 	public function check_trip_table($tblname = NULL)
 	{
-		if ( ! $tblname) {
-			$tblname = $this->tbl_name;
-		}
+		if ( ! $tblname) $tblname = $this->tbl_name;
 
 		if ($this->db->table_exists($tblname)) {
 			return;

@@ -17,10 +17,10 @@ $config['mailpath']  = '/usr/sbin/sendmail';
 $config['smtp_host'] = 'smtp.exmail.qq.com';
 
 //smtp用户账户
-$config['smtp_user'] = 'system@hitu.com';
+$config['smtp_user'] = '******@***.com';
 
 //smtp用户密码
-$config['smtp_pass'] = 'h1tu123';
+$config['smtp_pass'] = '******';
 
 //smtp端口
 $config['smtp_port'] = 25;
