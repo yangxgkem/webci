@@ -115,4 +115,4 @@ $c2s_cmd_cmd = array(
 
 tools/genxls 导表程序，把策划填写excel导出自己想要的解析数据
 
-详情后面会写一遍博客说明
+详情查看 **[https://github.com/yangxgkem/genxls](https://github.com/yangxgkem/genxls)**
