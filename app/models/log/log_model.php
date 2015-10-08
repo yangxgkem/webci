@@ -79,11 +79,15 @@ class Log_model extends CI_Model {
 		$this->connectdb();
 		$this->checkdb();
 		$this->check_trip_table($tblname);
+
 		$this->db->trans_start();
 		$this->db->insert($tblname, $data);
 		$this->db->trans_complete();
+
 		if ($this->db->trans_status() === FALSE) {
 			return FALSE;
 		}
 	}
 }
+
+

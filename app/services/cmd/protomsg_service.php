@@ -37,7 +37,7 @@ class Protomsg_service extends CI_Service {
 		elseif($cmd == 102) {
 			$data["test"] = "tetsssst";
 			$data["test2"] = "我们";
-			$this->efunc->addlog("cmd_log", $data);
+			$this->EFUNC->addlog("cmd_log", $data);
 			echo "ok!!!";
 		}
 	}

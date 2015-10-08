@@ -29,7 +29,7 @@ class Cmd_service extends CI_Service {
 		    $command = substr($command, 1);
 		    $cmddata=explode(" ", $command, 2);
 		    if ( ! isset($cmddata[0])) {
-		    	$this->efunc->RUNTIME_ERROR("you send cmd error");
+		    	$this->EFUNC->RUNTIME_ERROR("you send cmd error");
 		    	return;
 		    }
 		    
@@ -43,7 +43,7 @@ class Cmd_service extends CI_Service {
 		    
 		    //是否含有此指令
 		    if ( ! isset($this->cmdtbl[$real_cmd])) {
-		    	$this->efunc->RUNTIME_ERROR("not found cmd");
+		    	$this->EFUNC->RUNTIME_ERROR("not found cmd");
 		        return;
 		    }
 
@@ -51,14 +51,14 @@ class Cmd_service extends CI_Service {
 		    $power = $this->cmdtbl[$real_cmd][1];
 		    $ip = $this->input->ip_address();
 		    if(! isset($this->powertbl[$ip]) OR $this->powertbl[$ip] < $power) {
-		        $this->efunc->RUNTIME_ERROR("permission not power", $ip);
+		        $this->EFUNC->RUNTIME_ERROR("permission not power", $ip);
 		        return;
 		    }
 
 		    //是否含有指令函数
 		    $func = $this->cmdtbl[$real_cmd][0];
 		    if ( ! in_array($func, get_class_methods($this))) {
-		        $this->efunc->RUNTIME_ERROR("not found cmd func", $real_cmd);
+		        $this->EFUNC->RUNTIME_ERROR("not found cmd func", $real_cmd);
 		        return;
 		    }
 		    
