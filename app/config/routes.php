@@ -57,4 +57,3 @@ $route['translate_uri_dashes'] = TRUE;
 //匹配规则是由上到下按顺序执行的
 
 //涉及到协议访问,统一指向
-$route['pc/(.+)/checkproto'] = 'pc/checkproto';

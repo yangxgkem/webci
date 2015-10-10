@@ -66,6 +66,22 @@ class Log_model extends CI_Model {
 		$this->dbforge->create_table($tblname, TRUE, $attributes);
 	}
 
+	//校验数据完整性
+	public function chekc_data($data)
+	{
+		foreach ($data as $key => $value) {
+			switch ($key) {
+				case 'name':
+					if (is_string($value) AND strlen($value)<=40) break;
+					return;
+				default:
+					break;
+			}
+		}
+
+		return TRUE;
+	}
+
 	//根据月份分表
 	public function get_tblname() 
 	{
@@ -79,6 +95,7 @@ class Log_model extends CI_Model {
 		$this->connectdb();
 		$this->checkdb();
 		$this->check_trip_table($tblname);
+		$this->chekc_data($data);
 
 		$this->db->trans_start();
 		$this->db->insert($tblname, $data);
