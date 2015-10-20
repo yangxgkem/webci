@@ -76,8 +76,30 @@ class Xls_service extends CI_Service {
 		$writer->save($filename);
 	}
 
+	//将数据返回给浏览器
+	public function send_xls($data, $sheetname, $sendname)
+	{
+		$readertype = 'Excel5';
+		if(strstr($filename, ".xlsx")) {
+			$readertype = 'Excel2007';
+		}
+
+		$excel = new PHPExcel();
+		$sheet = $excel->getActiveSheet();
+		$sheet->fromArray($data);
+		$sheet->setTitle($sheetname);
+
+		//设置头信息
+		header('Content-Type: application/vnd.ms-excel');
+	    header('Content-Disposition: attachment;filename="'.$sendname.'"');
+	    header('Cache-Control: max-age=0');
+
+		$writer = PHPExcel_IOFactory::createWriter($excel, $readertype);
+		$writer->save('php://output');
+	}
+
 	//将本地xls文件返回给浏览器
-	public function send_xls($filename, $sendname) 
+	public function send_xls2($filename, $sendname)
 	{
 		//文件不存在直接返回
 		if ( ! file_exists($filename)) return;
