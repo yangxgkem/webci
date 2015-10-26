@@ -15,7 +15,7 @@ class Proto_service extends CI_Service {
 			'errno' => $errno,
 			'errmsg' => $errmsg,
 		);
-		return $this->userObj->send_proto('s2c_pname_error', $protoinfo);
+		return $this->USER->send_proto('s2c_pname_error', $protoinfo);
 	}
 
 	//校验协议数据
@@ -169,13 +169,13 @@ class Proto_service extends CI_Service {
 
 		//未登陆成功不允许访问提前业务协议
 		if ( ! strstr($pname, 'login') AND ! strstr($pname, 'cmd')) {
-			if ( ! $this->userObj->is_login()) {
+			if ( ! $this->USER->is_login()) {
 				$this->senderror(404, 'please sign in first');
 				return;
 			}
 			//登录时间过长,重新登录
 			$nowtime = strtotime('now');
-			$logintime = $this->userObj->get_sess("login_time");
+			$logintime = $this->USER->get_sess("login_time");
 			if (($nowtime-$logintime)>(3600*2)) {
 				$this->senderror(405, 'please sign in first');
 				return;

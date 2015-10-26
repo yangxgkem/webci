@@ -9,8 +9,9 @@ class Preload_service extends CI_Service {
 		$this->load->service('base/setting_service');
 		$this->load->service('base/proto_service');
 		$this->load->service("base/efunc_service", "EFUNC");
+		$this->load->service("base/cachetag_service", "CACHETAG");
 		$this->load->service("base/twig_service", "TWIG");
-
-		$this->load->service("user/user_service", "userObj");
+		$this->load->service("base/xls_service", "XLS");
+		$this->load->service("base/user_service", "USER");
 	}
 }

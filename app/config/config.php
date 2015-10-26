@@ -356,12 +356,10 @@ $config['encryption_key'] = '';
 | except for 'cookie_prefix' and 'cookie_httponly', which are ignored here.
 |
 */
-//$config['sess_driver'] = 'files';
-$config['sess_driver'] = 'memcached';
+$config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'hdy_sess';
 $config['sess_expiration'] = 7200;
-//$config['sess_save_path'] = FCPATH.'sessdata/';
-$config['sess_save_path'] = '127.0.0.1:11211';
+$config['sess_save_path'] = APPPATH.'cache/sessdata/'.date("Ymd",strtotime('now')).'/';
 $config['sess_match_ip'] = TRUE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = TRUE;
