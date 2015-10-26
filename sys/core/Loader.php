@@ -304,7 +304,7 @@ class CI_Loader {
 			load_class('Model', 'core');
 		}
 
-		$model = ucfirst(strtolower($model));
+		$model = strtolower($model);
 
 		foreach ($this->_ci_model_paths as $mod_path)
 		{
@@ -1461,7 +1461,7 @@ class CI_Loader {
 			load_class('Service', 'core');
 		}
 
-		$service = ucfirst(strtolower($service));
+		$service = strtolower($service);
 
 		foreach ($this->_ci_service_paths as $service_path)
 			{
