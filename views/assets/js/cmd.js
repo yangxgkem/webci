@@ -1,4 +1,4 @@
-document.write("<script src='/assets/js/base.js' type='text/javascript'></script>");
+document.write("<script src='/views/assets/js/base.js' type='text/javascript'></script>");
 
 //打印结果
 function show_message(data) {

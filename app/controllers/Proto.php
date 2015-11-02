@@ -13,7 +13,7 @@ class Proto extends CI_Controller {
 	{
 		//执行业务并返回数据给客户端
 		$this->proto_service->checkproto();
-		$protoinfo = $this->userObj->get_send_data();
+		$protoinfo = $this->USER->get_send_data();
 		if ($protoinfo) {
 			echo json_encode($protoinfo, JSON_UNESCAPED_UNICODE);
 			return;

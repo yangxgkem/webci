@@ -32,12 +32,12 @@ class Log_model extends CI_Model {
 	//校验数据库
 	public function checkdb()
 	{
-		if ( ! $this->dbutil->database_exists($dbname)) {
-			if ( ! $this->dbforge->create_database($dbname)) {
-				$this->efunc->RUNTIME_ERROR("create database error", $dbname);
+		if ( ! $this->dbutil->database_exists($this->db_name)) {
+			if ( ! $this->dbforge->create_database($this->db_name)) {
+				$this->EFUNC->RUNTIME_ERROR("create database error", $this->db_name);
 			}
 		}
-		$this->db->db_select($dbname);
+		$this->db->db_select($this->db_name);
 	}
 
 	//校验数据表
