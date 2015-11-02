@@ -23,31 +23,26 @@ class Log_model extends CI_Model {
 		if ($this->db !== NULL) {
 			return;
 		}
-		$data = $this->base_model->connectdb('log');
+		$data = $this->base_model->connectdb('default');
 		$this->db = $data['db'];
 		$this->dbutil = $data['dbutil'];
 		$this->dbforge = $data['dbforge'];
 	}
 
 	//校验数据库
-	public function checkdb($dbname = NULL)
+	public function checkdb()
 	{
-		if ( ! $dbname) $dbname = $this->db_name;
-
 		if ( ! $this->dbutil->database_exists($dbname)) {
 			if ( ! $this->dbforge->create_database($dbname)) {
 				$this->efunc->RUNTIME_ERROR("create database error", $dbname);
 			}
 		}
-
 		$this->db->db_select($dbname);
 	}
 
 	//校验数据表
-	public function check_trip_table($tblname = NULL)
+	public function check_table($tblname)
 	{
-		if ( ! $tblname) $tblname = $this->tbl_name;
-
 		if ($this->db->table_exists($tblname)) {
 			return;
 		}
@@ -82,28 +77,16 @@ class Log_model extends CI_Model {
 		return TRUE;
 	}
 
-	//根据月份分表
-	public function get_tblname() 
-	{
-		return $this->tbl_name.date("Ym",strtotime('now'));
-	}
-
 	//添加日志
 	public function addlog($data)
 	{
-		$tblname = $this->get_tblname();
+		$tblname = $this->tbl_name.date("Ym",strtotime('now'));;
 		$this->connectdb();
 		$this->checkdb();
-		$this->check_trip_table($tblname);
+		$this->check_table($tblname);
 		$this->chekc_data($data);
 
-		$this->db->trans_start();
 		$this->db->insert($tblname, $data);
-		$this->db->trans_complete();
-
-		if ($this->db->trans_status() === FALSE) {
-			return FALSE;
-		}
 	}
 }
 

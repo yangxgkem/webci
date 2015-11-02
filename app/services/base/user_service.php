@@ -39,6 +39,7 @@ class User_service extends CI_Service {
 		if (isset($_SESSION[$key])) {
 			return $_SESSION[$key];
 		}
+		return;
 	}
 
 	//保存用户数据

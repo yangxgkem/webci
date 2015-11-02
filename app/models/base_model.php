@@ -11,9 +11,13 @@ class Base_model extends CI_Model {
 		if (isset($this->conlist[$confname])) {
 			return $this->conlist[$confname];
 		}
-
-		$file_path = APPPATH.'config/database.php';
-		include($file_path);
+		
+		static $db;
+		if (empty($db))
+		{
+			$file_path = APPPATH.'config/database.php';
+			require($file_path);
+		}
 
 		//如果之前加载的配置中,存在以下字段相同的,则认为这两个配置是连接相同的服务器,无需再次连接db,直接返回数据
 		foreach ($this->conlist as $key => $value) {

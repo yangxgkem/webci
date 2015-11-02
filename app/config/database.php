@@ -59,19 +59,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 
-$active_group = 'log';
+$active_group = 'default';
 $query_builder = TRUE;
 
 
-//日志数据库
-$db['log'] = array(
+//默认数据库连接参数
+$db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => 'root',
 	'port' => 3306,
 	'database' => '',
-	'dbdriver' => 'mysqli', //mysqli和mysql都是mysql函数集, mysqli比mysql更高级,方法方面更全
+	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => TRUE,
 	'db_debug' => FALSE,
