@@ -1,44 +1,22 @@
 <?php
 
-class Log_model extends CI_Model {
+require_once (APPPATH.'models/base_model.php');
 
-	//数据库对象
-	public $db;
+class Log_model extends Base_model {
 
-	//数据库工具类
-	public $dbutil;
-
-	//数据库工厂类
-	public $dbforge;
+	//连接配置名称
+	public $confdb_name = "default";
 
 	//行程数据库名称
-	public $db_name = 'db_log';
+	public $db_name = "db_log";
 
 	//行程基本数据表名称
-	public $tbl_name = 'log_';
+	public $tbl_name = "log_";
 
-	//连接数据库
-	public function connectdb()
-	{
-		if ($this->db !== NULL) {
-			return;
-		}
-		$data = $this->base_model->connectdb('default');
-		$this->db = $data['db'];
-		$this->dbutil = $data['dbutil'];
-		$this->dbforge = $data['dbforge'];
-	}
-
-	//校验数据库
-	public function checkdb()
-	{
-		if ( ! $this->dbutil->database_exists($this->db_name)) {
-			if ( ! $this->dbforge->create_database($this->db_name)) {
-				$this->EFUNC->RUNTIME_ERROR("create database error", $this->db_name);
-			}
-		}
-		$this->db->db_select($this->db_name);
-	}
+	public function __construct()
+    {
+        parent::__construct();
+    }
 
 	//校验数据表
 	public function check_table($tblname)
@@ -81,8 +59,8 @@ class Log_model extends CI_Model {
 	public function addlog($data)
 	{
 		$tblname = $this->tbl_name.date("Ym",strtotime('now'));;
-		$this->connectdb();
-		$this->checkdb();
+		$this->connectdb($this->confdb_name);
+		$this->checkdb($this->db_name);
 		$this->check_table($tblname);
 		$this->chekc_data($data);
 

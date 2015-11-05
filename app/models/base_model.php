@@ -2,51 +2,40 @@
 
 class Base_model extends CI_Model {
 
-	//连接数据库列表
-	public $conlist = array();
+	//数据库对象
+	public $db;
 
+	//数据库工具类
+	public $dbutil;
+
+	//数据库工厂类
+	public $dbforge;
+
+	public function __construct()
+    {
+        parent::__construct();
+    }
+	
 	//连接数据库
-	public function connectdb($confname)
+	public function connectdb($confdb_name)
 	{
-		if (isset($this->conlist[$confname])) {
-			return $this->conlist[$confname];
+		if ($this->db !== NULL) {
+			return;
 		}
-		
-		static $db;
-		if (empty($db))
-		{
-			$file_path = APPPATH.'config/database.php';
-			require($file_path);
-		}
+		$data = $this->auto_model->connectdb($confdb_name);
+		$this->db = $data['db'];
+		$this->dbutil = $data['dbutil'];
+		$this->dbforge = $data['dbforge'];
+	}
 
-		//如果之前加载的配置中,存在以下字段相同的,则认为这两个配置是连接相同的服务器,无需再次连接db,直接返回数据
-		foreach ($this->conlist as $key => $value) {
-			foreach (array('hostname','username','password','port') as $key => $value) {
-				if ($db[$key][$value] !== $db[$confname][$value]) {
-					$isconnect = TRUE;
-					break;
-				}
-			}
-			if ($isconnect) {
-				$this->conlist[$confname] = array(
-					'db' => $value['db'],
-					'dbutil' => $value['dbutil'],
-					'dbforge' => $value['dbforge'],
-				);
-				return $this->conlist[$confname];
+	//校验数据库
+	public function checkdb($db_name)
+	{
+		if ( ! $this->dbutil->database_exists($db_name)) {
+			if ( ! $this->dbforge->create_database($db_name)) {
+				$this->EFUNC->RUNTIME_ERROR("create database error", $db_name);
 			}
 		}
-
-		$db = $this->load->database($confname, TRUE);//数据库对象
-		$dbutil = $this->load->dbutil($db, TRUE);//数据库工具类
-		$dbforge = $this->load->dbforge($db, TRUE);//数据库工厂类
-
-		$this->conlist[$confname] = array(
-			'db' => $db,
-			'dbutil' => $dbutil,
-			'dbforge' => $dbforge,
-		);
-
-		return $this->conlist[$confname];
+		$this->db->db_select($db_name);
 	}
 }
