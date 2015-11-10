@@ -23,7 +23,7 @@ class Cmd_service extends CI_Service {
 	//执行指令
 	public function c2s_cmd_cmd($protomsg)
 	{
-		
+
 		$command = $protomsg['command'];
 		if(stripos($command, "/") === 0) {
 		    $command = substr($command, 1);
@@ -32,7 +32,7 @@ class Cmd_service extends CI_Service {
 		    	$this->EFUNC->RUNTIME_ERROR("you send cmd error");
 		    	return;
 		    }
-		    
+
 		    $real_cmd = $cmddata[0];
 		    if (isset($cmddata[1])) {
 		    	$args = $cmddata[1];
@@ -40,7 +40,7 @@ class Cmd_service extends CI_Service {
 		    else {
 		    	$args = "";
 		    }
-		    
+
 		    //是否含有此指令
 		    if ( ! isset($this->cmdtbl[$real_cmd])) {
 		    	$this->EFUNC->RUNTIME_ERROR("not found cmd");
@@ -61,7 +61,7 @@ class Cmd_service extends CI_Service {
 		        $this->EFUNC->RUNTIME_ERROR("not found cmd func", $real_cmd);
 		        return;
 		    }
-		    
+
 		    //执行指令
 		    call_user_func_array(array($this, $func), array($args));
 		}
