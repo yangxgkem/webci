@@ -31,12 +31,14 @@ class Proto_service extends CI_Service {
 					break;
 				case 'repeated':
 					if ( ! isset($data[$key]) OR ! is_array($data[$key])) {
-						$this->senderror(405, 'repeated data error');
+						$this->senderror(405, 'repeated data error:'.$key);
 						return;
 					}
 					if (is_array($value[1])) {
-						if ( ! $this->checkprotodata($value[1], $data[$key])) {
-							return;
+						foreach ($data[$key] as $datakey => $datavalue) {
+							if ( ! $this->checkprotodata($value[1], $datavalue)) {
+								return;
+							}
 						}
 					}
 					break;
@@ -168,7 +170,7 @@ class Proto_service extends CI_Service {
 		}
 
 		//未登陆成功不允许访问提前业务协议
-		if ( ! strstr($pname, 'login') AND ! strstr($pname, 'cmd')) {
+		/*if ( ! strstr($pname, 'login') AND ! strstr($pname, 'cmd')) {
 			if ( ! $this->USER->is_login()) {
 				$this->senderror(404, 'please sign in first');
 				return;
@@ -180,7 +182,7 @@ class Proto_service extends CI_Service {
 				$this->senderror(405, 'please sign in first');
 				return;
 			}
-		}
+		}*/
 
 		//校验协议数据完整性
 		require_once(APPPATH.'protocol/proto/'.$service[2]);
