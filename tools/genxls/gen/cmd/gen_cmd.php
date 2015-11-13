@@ -1,6 +1,6 @@
 <?php
 
-class gen {
+class class_gen_cmd {
 	public $xlsObj; //xls对象
 	public $in_file = "xls/cmd/cmd.xls"; //xls文件
 	public $out_file = "setting/cmd/cmd_data.php"; //输出文件
@@ -41,9 +41,4 @@ class gen {
 		}
 		$this->xlsObj->save($this->out_file, "CmdPowerData", $tmp, "指令权限数据");
 	}
-}
-
-function DoGen($xlsObj) {
-	$gen = new gen($xlsObj);
-	$data = $gen->DoGen();
 }

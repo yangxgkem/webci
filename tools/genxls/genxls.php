@@ -2,10 +2,12 @@
 
 require_once "gen/base/xls.php";
 
+
 //指令数据
 function gen_cmd($xlsObj) {
 	require_once "gen/cmd/gen_cmd.php";
-	DoGen($xlsObj);
+	$gen = new class_gen_cmd($xlsObj);
+	$gen->DoGen();
 }
 
 //gen all
