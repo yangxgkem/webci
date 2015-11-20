@@ -74,14 +74,14 @@ class CI_Cache extends CI_Driver_Library {
 	 *
 	 * @var mixed
 	 */
-	protected $_adapter = 'memcached';
+	protected $_adapter = 'dummy';
 
 	/**
 	 * Fallback driver
 	 *
 	 * @var string
 	 */
-	protected $_backup_driver = 'memcached';
+	protected $_backup_driver = 'dummy';
 
 	/**
 	 * Cache key prefix

@@ -269,14 +269,14 @@ class CI_DB_ibase_driver extends CI_DB {
 		$sql = 'SELECT "rfields"."RDB$FIELD_NAME" AS "name",
 				CASE "fields"."RDB$FIELD_TYPE"
 					WHEN 7 THEN \'SMALLINT\'
-					WHEN 8 THEN ÍNTEGER\'
+					WHEN 8 THEN \'INTEGER\'
 					WHEN 9 THEN \'QUAD\'
 					WHEN 10 THEN \'FLOAT\'
 					WHEN 11 THEN \'DFLOAT\'
 					WHEN 12 THEN \'DATE\'
 					WHEN 13 THEN \'TIME\'
 					WHEN 14 THEN \'CHAR\'
-					WHEN 16 THEN ÍNT64\'
+					WHEN 16 THEN \'INT64\'
 					WHEN 27 THEN \'DOUBLE\'
 					WHEN 35 THEN \'TIMESTAMP\'
 					WHEN 37 THEN \'VARCHAR\'

@@ -39,16 +39,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |  $autoload['packages'] = array(APPPATH.'third_party', '/usr/local/shared');
 |
 */
-
 $autoload['packages'] = array();
-
 
 /*
 | -------------------------------------------------------------------
 |  Auto-load Libraries
 | -------------------------------------------------------------------
-| These are the classes located in the system/libraries folder
-| or in your application/libraries folder.
+| These are the classes located in system/libraries/ or your
+| application/libraries/ directory, with the addition of the
+| 'database' library, which is somewhat of a special case.
 |
 | Prototype:
 |
@@ -67,8 +66,9 @@ $autoload['libraries'] = array('user_agent', 'session');
 | -------------------------------------------------------------------
 |  Auto-load Drivers
 | -------------------------------------------------------------------
-| These classes are located in the system/libraries folder or in your
-| application/libraries folder within their own subdirectory. They
+| These classes are located in system/libraries/ or in your
+| application/libraries/ directory, but are also placed inside their
+| own subdirectory and they extend the CI_Driver_Library class. They
 | offer multiple interchangeable driver options.
 |
 | Prototype:
@@ -87,9 +87,7 @@ $autoload['drivers'] = array('cache');
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-
 $autoload['helper'] = array();
-
 
 /*
 | -------------------------------------------------------------------
@@ -103,9 +101,7 @@ $autoload['helper'] = array();
 | config files.  Otherwise, leave it blank.
 |
 */
-
 $autoload['config'] = array();
-
 
 /*
 | -------------------------------------------------------------------
@@ -119,9 +115,7 @@ $autoload['config'] = array();
 | "codeigniter_lang.php" would be referenced as array('codeigniter');
 |
 */
-
 $autoload['language'] = array();
-
 
 /*
 | -------------------------------------------------------------------

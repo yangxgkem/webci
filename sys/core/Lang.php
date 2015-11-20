@@ -199,4 +199,5 @@ class CI_Lang {
 
 		return $value;
 	}
+
 }

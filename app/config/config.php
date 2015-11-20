@@ -58,7 +58,6 @@ $config['uri_protocol']	= 'REQUEST_URI';
 |
 | http://codeigniter.com/user_guide/general/urls.html
 */
-
 $config['url_suffix'] = '';
 
 /*
@@ -95,7 +94,7 @@ $config['charset'] = 'UTF-8';
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
-$config['enable_hooks'] = TRUE;
+$config['enable_hooks'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -155,7 +154,6 @@ $config['composer_autoload'] = FALSE;
 */
 $config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
 
-
 /*
 |--------------------------------------------------------------------------
 | Enable Query Strings
@@ -192,8 +190,6 @@ $config['directory_trigger'] = 'd';
 | Error Logging Threshold
 |--------------------------------------------------------------------------
 |
-| If you have enabled error logging, you can set an error threshold to
-| determine what gets logged. Threshold options are:
 | You can enable error logging by setting a threshold over zero. The
 | threshold determines what gets logged. Threshold options are:
 |
@@ -221,7 +217,7 @@ $config['log_threshold'] = array(1);
 | Leave this BLANK unless you would like to set something other than the default
 | application/logs/ directory. Use a full server path with trailing slash.
 |
-| è¯·ä½¿ç”¨ç»å¯¹è·¯å¾„
+| ÇëÊ¹ÓÃ¾ø¶ÔÂ·¾¶
 */
 $config['log_path'] = FCPATH.'logs/';
 
@@ -289,8 +285,15 @@ $config['cache_path'] = '';
 | Cache Include Query String
 |--------------------------------------------------------------------------
 |
-| Set this to TRUE if you want to use different cache files depending on the
-| URL query string.  Please be aware this might result in numerous cache files.
+| Whether to take the URL query string into consideration when generating
+| output cache files. Valid options are:
+|
+|	FALSE      = Disabled
+|	TRUE       = Enabled, take all query parameters into account.
+|	             Please be aware that this may result in numerous cache
+|	             files generated for the same page over and over again.
+|	array('q') = Enabled, but only take into account the specified list
+|	             of query parameters.
 |
 */
 $config['cache_query_string'] = FALSE;
@@ -328,7 +331,7 @@ $config['encryption_key'] = '';
 |
 | 'sess_save_path'
 |
-|	The location to save sessions to, driver dependant.
+|	The location to save sessions to, driver dependent.
 |
 |	For the 'files' driver, it's a path to a writable directory.
 |	WARNING: Only absolute paths are supported!
@@ -341,6 +344,9 @@ $config['encryption_key'] = '';
 | 'sess_match_ip'
 |
 |	Whether to match the user's IP address when reading the session data.
+|
+|	WARNING: If you're using the database driver, don't forget to update
+|	         your session table's PRIMARY KEY when changing this setting.
 |
 | 'sess_time_to_update'
 |
@@ -391,7 +397,7 @@ $config['cookie_httponly'] 	= FALSE;
 |--------------------------------------------------------------------------
 |
 | Determines whether to standardize newline characters in input data,
-| meaning to replace \r\n, \r, \n occurences with the PHP_EOL value.
+| meaning to replace \r\n, \r, \n occurrences with the PHP_EOL value.
 |
 | This is particularly useful for portability between UNIX-based OSes,
 | (usually \n) and Windows (\r\n).
@@ -453,12 +459,12 @@ $config['csrf_exclude_uris'] = array();
 | compression to work, nothing can be sent before the output buffer is called
 | by the output class.  Do not 'echo' any values with compression enabled.
 | 
-| å¯åŠ¨åŽä¼šåˆ¤å®šå®¢æˆ·ç«¯httpè¯·æ±‚,accept_encodingå­—æ®µæ˜¯å¦æ”¯æŒ gzip åŽ‹ç¼©,å¦‚æžœæ”¯æŒ
-| æœåŠ¡ç«¯è¿™è¾¹å°†ä¼šå¯¹æ•°æ®è¿›è¡ŒgzipåŽ‹ç¼©åŽé€šè¿‡ echo å›žä¼ ç»™å®¢æˆ·ç«¯
-| æ‰€ä»¥åœ¨ä»»ä½•åœ°æ–¹éƒ½ä¸è¦è¿›è¡Œ echo è¿›è¡Œè¾“å‡ºæ“ä½œ
+| Æô¶¯ºó»áÅÐ¶¨¿Í»§¶ËhttpÇëÇó,accept_encoding×Ö¶ÎÊÇ·ñÖ§³Ö gzip Ñ¹Ëõ,Èç¹ûÖ§³Ö
+| ·þÎñ¶ËÕâ±ß½«»á¶ÔÊý¾Ý½øÐÐgzipÑ¹ËõºóÍ¨¹ý echo »Ø´«¸ø¿Í»§¶Ë
+| ËùÒÔÔÚÈÎºÎµØ·½¶¼²»Òª½øÐÐ echo ½øÐÐÊä³ö²Ù×÷
 |
-| éžå¸¸é‡è¦,å¦‚æžœè¦å¼€å¯gzip å¯ä»¥åœ¨ngnix.confä¸‹é…ç½®,æ— éœ€åœ¨web serverä¸­é…ç½®
-| æ‰€ä»¥$config['compress_output'] = FALSE; è¯·ä¸è¦ä¿®æ”¹, è®¾ç½®ä¸ºfalseå³å¯
+| ·Ç³£ÖØÒª,Èç¹ûÒª¿ªÆôgzip ¿ÉÒÔÔÚngnix.confÏÂÅäÖÃ,ÎÞÐèÔÚweb serverÖÐÅäÖÃ
+| ËùÒÔ$config['compress_output'] = FALSE; Çë²»ÒªÐÞ¸Ä, ÉèÖÃÎªfalse¼´¿É
 */
 $config['compress_output'] = FALSE;
 
@@ -484,9 +490,10 @@ $config['time_reference'] = 'local';
 | can rewrite the tags on-the-fly, enabling you to utilize that syntax
 | in your view files.  Options are TRUE or FALSE (boolean)
 |
+| Note: You need to have eval() enabled for this to work.
+|
 */
 $config['rewrite_short_tags'] = FALSE;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -504,14 +511,14 @@ $config['rewrite_short_tags'] = FALSE;
 | Comma-separated:	'10.0.1.200,192.168.5.0/24'
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 |
-| é…ç½®åå‘ä»£ç†æœåŠ¡å™¨IP, é€šè¿‡$CI->input->ip_address() å¯èŽ·å¾—çœŸå®žè¯·æ±‚å®¢æˆ·ç«¯IP
+| ÅäÖÃ·´Ïò´úÀí·þÎñÆ÷IP, Í¨¹ý$CI->input->ip_address() ¿É»ñµÃÕæÊµÇëÇó¿Í»§¶ËIP
 */
 $config['proxy_ips'] = '192.168.0.0/16';
 
 
 /*
 |--------------------------------------------------------------------------
-| ä¸Šä¼ èµ„æºå›¾ç‰‡å­˜æ”¾è·¯å¾„
+| ÉÏ´«×ÊÔ´Í¼Æ¬´æ·ÅÂ·¾¶
 |--------------------------------------------------------------------------
 */
 
