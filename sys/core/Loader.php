@@ -1343,6 +1343,12 @@ class CI_Loader {
 		{
 			$this->model($autoload['model']);
 		}
+
+		// Autoload services
+		if (isset($autoload['service']))
+		{
+			$this->service($autoload['service']);
+		}
 	}
 
 	// --------------------------------------------------------------------
@@ -1460,13 +1466,13 @@ class CI_Loader {
 		{
 			show_error('The service name you are loading is the name of a resource that is already being used: '.$name);
 		}
-
+		
 		if (!class_exists('CI_Service', FALSE))
 		{
 			load_class('Service', 'core');
 		}
 
-		$service = strtolower($service);
+		$service = ucfirst(strtolower($service));
 
 		foreach ($this->_ci_service_paths as $service_path)
 			{

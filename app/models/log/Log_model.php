@@ -1,6 +1,6 @@
 <?php
 
-require_once (APPPATH.'models/base_model.php');
+require_once (APPPATH.'models/Base_model.php');
 
 class Log_model extends Base_model {
 
