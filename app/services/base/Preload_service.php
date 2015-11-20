@@ -5,7 +5,6 @@ class Preload_service extends CI_Service {
 
 	public function __construct()
 	{
-		log_message("error", "sadfasdfasdf");
 		parent::__construct();
 		$this->load->service('base/setting_service');
 		$this->load->service('base/proto_service');
