@@ -37,12 +37,12 @@ class Auto_model extends CI_Model {
 			}
 		}
 
-		$db = $this->load->database($confname, TRUE);//数据库对象
-		$dbutil = $this->load->dbutil($db, TRUE);//数据库工具类
-		$dbforge = $this->load->dbforge($db, TRUE);//数据库工厂类
+		$db_obj = $this->load->database($confname, TRUE);//数据库对象
+		$dbutil = $this->load->dbutil($db_obj, TRUE);//数据库工具类
+		$dbforge = $this->load->dbforge($db_obj, TRUE);//数据库工厂类
 
 		$this->conlist[$confname] = array(
-			'db' => $db,
+			'db' => $db_obj,
 			'dbutil' => $dbutil,
 			'dbforge' => $dbforge,
 		);
