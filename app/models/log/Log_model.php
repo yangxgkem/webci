@@ -4,18 +4,15 @@ require_once (APPPATH.'models/Base_model.php');
 
 class Log_model extends Base_model {
 
-	//连接配置名称
-	public $confdb_name = "default";
-
-	//行程数据库名称
-	public $db_name = "db_log";
-
-	//行程基本数据表名称
-	public $tbl_name = "log_";
-
 	public function __construct()
     {
         parent::__construct();
+    }
+
+    public function con_and_checkdb()
+    {
+        $this->connectdb("default");
+        $this->checkdb("cilog");
     }
 
 	//校验数据表
@@ -58,13 +55,12 @@ class Log_model extends Base_model {
 	//添加日志
 	public function addlog($data)
 	{
-		$tblname = $this->tbl_name.date("Ym",strtotime('now'));;
-		$this->connectdb($this->confdb_name);
-		$this->checkdb($this->db_name);
+		$tblname = "log_".date("Ym",strtotime('now'));;
+		$this->con_and_checkdb();
 		$this->check_table($tblname);
 		$this->chekc_data($data);
 
-		$this->db->insert($tblname, $data);
+		return $this->db->insert($tblname, $data);
 	}
 }
 
