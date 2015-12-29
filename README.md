@@ -139,7 +139,7 @@ nginx简单配置
 	    listen 8001;
 	    server_name localhost;
 	    index index.html index.htm index.php;
-	    root  /mnt/hgfs/web/webci;
+	    root  /mnt/hgfs/web/webci/web;
 	    
 	    location / {
 	        try_files $uri $uri/ =404;
@@ -160,13 +160,5 @@ nginx简单配置
 	        fastcgi_pass unix:/var/run/php5-fpm.sock;
 	        fastcgi_index index.php;
 	        include fastcgi_params;
-	    }
-	
-		#禁止直接访问
-	    location ^~ /app {
-	        deny all;
-	    }
-		location ^~ /sys {
-	        deny all;
 	    }
 	}

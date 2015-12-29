@@ -96,6 +96,15 @@ switch (ENVIRONMENT)
 
 /*
  *---------------------------------------------------------------
+ * code目录
+ *---------------------------------------------------------------
+ *
+ * 把代码层目录分离出来，不让浏览器直接可以访问到，全部由index.php作为入口
+ */
+	$code_path = '../code/';
+
+/*
+ *---------------------------------------------------------------
  * SYSTEM FOLDER NAME
  *---------------------------------------------------------------
  *
@@ -103,7 +112,7 @@ switch (ENVIRONMENT)
  * Include the path if the folder is not in the same directory
  * as this file.
  */
-	$system_path = 'sys';
+	$system_path = $code_path.'sys';
 
 /*
  *---------------------------------------------------------------
@@ -118,7 +127,7 @@ switch (ENVIRONMENT)
  *
  * NO TRAILING SLASH!
  */
-	$application_folder = 'app';
+	$application_folder = $code_path.'app';
 
 /*
  *---------------------------------------------------------------

@@ -13,7 +13,7 @@ class Twig_service extends CI_Service {
     	require_once (APPPATH.'3rd/Twig/Autoloader.php');
 		Twig_Autoloader::register();
 		$this->loader = new Twig_Loader_Filesystem(VIEWPATH);
-		$this->twig = new Twig_Environment($this->loader, array('debug' => FALSE, 'auto_reload' => TRUE, 'cache' => APPPATH."cache/twig/",));
+		$this->twig = new Twig_Environment($this->loader, array('debug' => FALSE, 'auto_reload' => TRUE, 'cache' => FCPATH."cache/twig/",));
 	}
 
     //给变量赋值
