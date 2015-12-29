@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <script type="text/javascript" charset="utf-8" src="/views/ueditor/ueditor.parse.js"> </script>
+</head>
+
+<body>
+
+<div id="content_show">
+{{content|raw}}
+</div>
+
+<script type="text/javascript">
+    uParse("content_show", {
+        rootPath: "/views/ueditor/"
+    })
+</script>
+
+</body>
+
+</html>

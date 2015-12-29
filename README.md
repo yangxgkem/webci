@@ -29,8 +29,10 @@ app/views 目录移到app相同目录结构下，允许用户之间访问view目
 
 添加service层，把本来的MVC模式 改为现在的 SMVC模式。
 
+```
 sys/core/Service.php
 app/services/*_service.php
+```
 
 随着业务越来越复杂，controller越来越臃肿，举一个简单的例子，比如说用户下订单，这必然会有一系列的操作：更新购物车、添加订单记录、会员添加积分等等，且下订单的过程可能在多种场景出现，
 如果这样的代码放controller中则很臃肿难以复用，如果放model会让持久层和业务层耦合。很多人将一些业务逻辑写到model中去了，model中又调其它model，也就是业务层和持久层相互耦合。
@@ -38,28 +40,28 @@ app/services/*_service.php
 
 可以考虑在controller和model中加一个业务层service，由它来负责业务逻辑，封装好的调用接口可以被controller复用。这样各层的任务就明确了：
 
-Model: 数据持久层的工作，对数据库的操作都封装在这。
+`Model`: 数据持久层的工作，对数据库的操作都封装在这。
 
-Service: 业务逻辑层，负责业务模块的逻辑应用设计，controller中就可以调用service的接口实现业务逻辑处理，提高了通用的业务逻辑的复用性，设计到具体业务实现会调用Model的接口。
+`Service`: 业务逻辑层，负责业务模块的逻辑应用设计，controller中就可以调用service的接口实现业务逻辑处理，提高了通用的业务逻辑的复用性，设计到具体业务实现会调用Model的接口。
 
-Controller: 控制层，负责具体业务流程控制，这里调用service层，将数据返回到视图
+`Controller`: 控制层，负责具体业务流程控制，这里调用service层，将数据返回到视图
 
-View: 负责前端页面展示，与Controller紧密联系。
+`View`: 负责前端页面展示，与Controller紧密联系。
 
 ------------------------------------------------------
 
 >5
 
 添加日志模块，存储业务处理过程中需要记录的相关的log
-
+```
 models/log/log_model.php
-
+```
 所有的数据连接必须由 models/base_model.php 下进行，由 base_model 统一管理。它还优化了如果需要连接多个数据库时，如果地址一样，只会第一次连接生效，第二次开始不会执行。
 
 ------------------------------------------------------
 
 >6
-
+```
 app/services/base 下添加了相关常用功能模块
 
 preload_service.php 在config/autoroad下配置加载 此模块用于管理需要全局加载的service
@@ -73,6 +75,7 @@ setting_service.php 静态数据加载模块 用于加载excel表导出的数据
 upload_service.php 文件上传模块
 
 xls_service.php excel文件读写操作
+```
 
 ------------------------------------------------------
 
@@ -108,10 +111,14 @@ $c2s_cmd_cmd = array(
 >8
 
 3rd为第三方代码
+
 当前嵌入第三方库有：
-phpexcel
-Twig
-phpqrcode
+```
+excel表处理：phpexcel
+模板：Twig
+二维码生成：phpqrcode
+富文本：百度Ueditor:ueditor_release-ueditor1_4_3_1-utf8-php
+```
 
 ------------------------------------------------------
 
@@ -120,3 +127,47 @@ phpqrcode
 tools/genxls 导表程序，把策划填写excel导出自己想要的解析数据
 
 详情查看 **[https://github.com/yangxgkem/genxls](https://github.com/yangxgkem/genxls)**
+
+------------------------------------------------------
+
+>10
+
+nginx简单配置
+```
+server
+{
+    listen 8001;
+    server_name localhost;
+    index index.html index.htm index.php;
+    root  /mnt/hgfs/web/webci;
+    
+    location / {
+        try_files $uri $uri/ =404;
+        if (-f $request_filename/index.php) {
+            rewrite (.*) $1/index.php;
+        }
+        #如果没有找到指定目录文件,那么重写路由加上index.php
+        #如果找到,这表明它是一个资源,无需经过web php处理直接返回
+        if (!-f $request_filename) {
+            rewrite (.*) /index.php;
+        }
+    }
+
+    #调用php web服务器
+    location ~ .*\.(php|php5)?$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        # With php5-fpm:
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_index index.php;
+        include fastcgi_params;
+    }
+
+	#禁止直接访问
+    location ^~ /app {
+        deny all;
+    }
+	location ^~ /sys {
+        deny all;
+    }
+}
+```
