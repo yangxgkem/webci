@@ -48,18 +48,16 @@ class Log_model extends Base_model {
 					break;
 			}
 		}
-
 		return TRUE;
 	}
 
 	//添加日志
 	public function addlog($data)
 	{
-		$tblname = "log_".date("Ym",strtotime('now'));;
 		$this->con_and_checkdb();
+		$tblname = "log_".date("Ym",strtotime('now'));;
 		$this->check_table($tblname);
 		$this->chekc_data($data);
-
 		return $this->db->insert($tblname, $data);
 	}
 }

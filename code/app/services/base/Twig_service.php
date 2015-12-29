@@ -29,7 +29,7 @@ class Twig_service extends CI_Service {
     }
 	
     //解析渲染
-	public function view($tpl, $data, $return = FALSE) 
+	public function view($tpl, $data=array(), $return = FALSE) 
 	{
         $data = array_merge($this->data, $data);
 		$output = $this->twig->render($tpl, $data);

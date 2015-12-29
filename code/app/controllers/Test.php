@@ -16,13 +16,13 @@ class Test extends CI_Controller {
     //打开富文本界面
     public function ueditor()
     {
-        $data["content"] = "";
-        $this->TWIG->view('ueditor/test.html', $data);
+        $this->TWIG->view('ueditor/test.html');
     }
 
     public function controller()
     {
-        $protomsg = $this->input->post();
-        $this->TWIG->view('ueditor/test_show.html', $protomsg);
+        $data = $this->input->post();
+        $data = $this->security->xss_clean($data);
+        $this->TWIG->view('ueditor/test_show.html', $data);
     }
 }
